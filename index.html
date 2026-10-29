@@ -39,7 +39,7 @@
 <body class="bg-gray-100 text-gray-800 antialiased selection:bg-blue-200">
 
     <div class="max-w-2xl mx-auto bg-white h-screen h-[100dvh] relative shadow-2xl overflow-hidden flex flex-col">
-        
+
         <!-- Header -->
         <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 px-4 py-3 flex justify-between items-center transition-all duration-300">
             <div class="font-bold text-lg text-theme-dark truncate">激光雷达大会电子手册</div>
@@ -69,7 +69,7 @@
 
         <!-- Main Content -->
         <main id="mainScroll" class="flex-1 min-h-0 overflow-y-auto no-scrollbar scroll-smooth">
-            
+
             <!-- Hero Section -->
             <section id="hero" class="bg-starry text-white pt-16 pb-20 px-6 text-center shadow-inner">
                 <div class="content-layer">
@@ -127,12 +127,49 @@
             </div>
 
             <div id="org-container" class="space-y-3"></div>
+
+            <div class="border border-cyan-100 rounded-2xl bg-white mt-3 overflow-hidden shadow-sm">
+                <button class="w-full text-left p-4 flex justify-between items-center bg-gradient-to-r from-cyan-50 to-white hover:bg-cyan-50 transition-colors" onclick="toggleAccordion(this)" aria-expanded="false">
+                    <span class="font-bold text-cyan-950 text-sm">🏫 大会承办单位介绍（V11）</span>
+                    <span class="flex items-center gap-2 text-xs text-cyan-700">点击查看<svg class="w-5 h-5 text-cyan-500 transform transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                </button>
+                <div class="accordion-content bg-white text-sm border-t border-cyan-100">
+                    <div class="p-3 space-y-3">
+                        <a href="assets/v11-organizer-intro-1.png" target="_blank" rel="noopener" class="block rounded-xl overflow-hidden border border-cyan-100 bg-cyan-50">
+                            <img src="assets/v11-organizer-intro-1.png" loading="lazy" alt="大会承办单位介绍第1页" class="w-full h-auto">
+                        </a>
+                        <a href="assets/v11-organizer-intro-2.png" target="_blank" rel="noopener" class="block rounded-xl overflow-hidden border border-cyan-100 bg-cyan-50">
+                            <img src="assets/v11-organizer-intro-2.png" loading="lazy" alt="大会承办单位介绍第2页" class="w-full h-auto">
+                        </a>
+                        <a href="assets/v11-organizer-intro-3.png" target="_blank" rel="noopener" class="block rounded-xl overflow-hidden border border-cyan-100 bg-cyan-50">
+                            <img src="assets/v11-organizer-intro-3.png" loading="lazy" alt="大会承办单位介绍第3页" class="w-full h-auto">
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
 
             <!-- Schedule Overview -->
             <section id="schedule-overview" class="p-6 scroll-mt-12 border-b border-gray-100 bg-gray-50">
                 <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-6"><div class="w-2 h-6 bg-blue-600 rounded-full mr-3"></div>日程总览</h3>
                 <div id="schedule-container" class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px before:h-full before:w-0.5 before:bg-blue-200"></div>
+                <div class="border border-blue-200 rounded-xl bg-white mt-6 overflow-hidden shadow-sm">
+                    <button class="w-full text-left p-4 flex justify-between items-center bg-gradient-to-r from-blue-50 to-white hover:bg-blue-50 transition-colors" onclick="toggleAccordion(this)" aria-expanded="false">
+                        <span class="font-bold text-blue-950 text-sm">🗺️ 会场分布示意图</span>
+                        <span class="flex items-center gap-2 text-xs text-blue-600">望海翼 / 南海翼<svg class="w-5 h-5 text-blue-400 transform transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                    </button>
+                    <div class="accordion-content bg-white text-sm border-t border-blue-100">
+                        <div class="p-3 space-y-3">
+                            <a href="assets/v11-venue-map-wanghai.png" target="_blank" rel="noopener" class="block rounded-xl overflow-hidden border border-blue-100">
+                                <img src="assets/v11-venue-map-wanghai.png" loading="lazy" alt="望海翼会场分布示意图" class="w-full h-auto">
+                            </a>
+                            <a href="assets/v11-venue-map-nanhai.png" target="_blank" rel="noopener" class="block rounded-xl overflow-hidden border border-blue-100">
+                                <img src="assets/v11-venue-map-nanhai.png" loading="lazy" alt="南海翼会场分布示意图" class="w-full h-auto">
+                            </a>
+                            <p class="text-[11px] text-gray-500 text-center">点击图片可查看原图</p>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- Keynotes -->
@@ -154,7 +191,7 @@
             <section id="special-events" class="p-6 scroll-mt-12 border-b border-gray-100">
                 <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-2"><div class="w-2 h-6 bg-blue-600 rounded-full mr-3"></div>数据比赛、优秀青年报告与海报展示</h3>
                 <p class="text-xs text-gray-500 mb-6">点击卡片查看比赛队伍、优秀青年论文与快闪报告、主持人及 P-001 至 P-072 海报安排</p>
-                
+
                 <div id="special-events-container" class="space-y-3">
                     <!-- Dynamic rendering via script below -->
                 </div>
@@ -163,7 +200,7 @@
             <!-- Logistics -->
             <section id="logistics" class="p-6 scroll-mt-12 border-b border-gray-100 bg-gray-50">
                 <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-6"><div class="w-2 h-6 bg-blue-600 rounded-full mr-3"></div>会务与出行指南</h3>
-                
+
                 <!-- 交通指南折叠标签 -->
                 <div class="border border-gray-200 rounded-xl bg-white mb-3 overflow-hidden shadow-sm">
                     <button class="w-full text-left p-4 flex justify-between items-center bg-white hover:bg-gray-50 transition-colors" onclick="toggleAccordion(this)">
@@ -177,10 +214,28 @@
                             <p><strong class="text-blue-600">福田站：</strong>打车约21.5公里、约35分钟；或乘地铁11号线至南山站，换乘12号线至海上世界站D口，步行640米。</p>
                             <p><strong class="text-blue-600">深圳站（罗湖火车站）：</strong>打车约28.5公里、约45分钟；或乘地铁1号线至车公庙站，换乘11号线后再换乘12号线至海上世界站D口，步行640米。</p>
                             <div class="bg-blue-50 border border-blue-100 rounded-lg p-3 text-blue-950">
-                                <p><strong>步行：</strong>海上世界站A口/D口至望海翼大堂约976米，步行约13分钟。</p>
+                                <p><strong>步行：</strong>海上世界站A口/D口至望海翼大堂约640米，步行约13分钟。</p>
                                 <p><strong>自驾：</strong>请停“宴会厅南门”地下停车场。</p>
                                 <p><strong>打车：</strong>请导航至“望海翼大堂”。</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border border-sky-200 rounded-xl bg-white mb-3 overflow-hidden shadow-sm">
+                    <button class="w-full text-left p-4 flex justify-between items-center bg-white hover:bg-sky-50 transition-colors" onclick="toggleAccordion(this)" aria-expanded="false">
+                        <span class="font-bold text-gray-800 text-sm">🧭 步行与车辆通行路线图</span>
+                        <svg class="w-5 h-5 text-sky-500 transform transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content bg-gray-50 text-sm border-t border-sky-100">
+                        <div class="p-3 space-y-3">
+                            <a href="assets/v11-walking-route.png" target="_blank" rel="noopener" class="block rounded-xl overflow-hidden border border-sky-100 bg-white">
+                                <img src="assets/v11-walking-route.png" loading="lazy" alt="参会人员步行路线图" class="w-full h-auto">
+                            </a>
+                            <a href="assets/v11-driving-route.png" target="_blank" rel="noopener" class="block rounded-xl overflow-hidden border border-sky-100 bg-white">
+                                <img src="assets/v11-driving-route.png" loading="lazy" alt="参会车辆通行路线图" class="w-full h-auto">
+                            </a>
+                            <p class="text-[11px] text-gray-500 text-center">点击图片可查看原图</p>
                         </div>
                     </div>
                 </div>
@@ -213,15 +268,30 @@
                 <!-- 推荐酒店折叠标签 -->
                 <div class="border border-gray-200 rounded-xl bg-white mb-3 overflow-hidden shadow-sm">
                     <button class="w-full text-left p-4 flex justify-between items-center bg-white hover:bg-gray-50 transition-colors" onclick="toggleAccordion(this)" aria-expanded="false">
-                        <span class="font-bold text-gray-800 text-sm">🏨 推荐酒店（手册 V9）</span>
+                        <span class="font-bold text-gray-800 text-sm">🏨 推荐酒店（手册 V11）</span>
                         <svg class="w-5 h-5 text-gray-400 transform transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content bg-gray-50 text-sm border-t border-gray-100">
                         <div class="p-4 space-y-2 text-xs text-gray-700 leading-relaxed">
-                            <p><strong>步行10-12分钟：</strong>盈舍轻奢S酒店；Calmsea高空海景平静海酒店；LAYFLAT HOTEL躺平酒店；深圳海上世界鸿隆公寓（黄经理 15818507042）。</p>
+                            <p><strong>步行10-12分钟：</strong>盈舍轻奢S酒店（王经理 18948780698）；Calmsea高空海景平静海酒店；LAYFLAT HOTEL躺平酒店；深圳海上世界鸿隆公寓（黄经理 15818507042）。</p>
                             <p><strong>步行13-19分钟：</strong>深圳蛇口邮轮中心K11 ECOAST和颐至尚酒店（15112675067）；深圳南山伊敦酒店（于经理 13302932593）；RANZ兰兹酒店（覃经理 18898768501）；Ruby Columbus瑰宝酒店（林经理 18688758305）；深圳蛇口海上世界开元名庭酒店（利经理 15627361736）；格兰云天·阅酒店（米经理 13924666050）。</p>
                             <p><strong>步行22分钟：</strong>深圳蛇口海上世界品上酒店（黄经理 18823369997）。</p>
                             <p><strong>驾车约12分钟：</strong>维也纳酒店深圳蛇口海湾店（朱经理 13923432392）；维也纳酒店深圳湾爱榕店。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border border-violet-200 rounded-xl bg-white mb-3 overflow-hidden shadow-sm">
+                    <button class="w-full text-left p-4 flex justify-between items-center bg-white hover:bg-violet-50 transition-colors" onclick="toggleAccordion(this)" aria-expanded="false">
+                        <span class="font-bold text-gray-800 text-sm">📷 大会照片直播</span>
+                        <svg class="w-5 h-5 text-violet-500 transform transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content bg-gray-50 text-sm border-t border-violet-100">
+                        <div class="p-3 text-center">
+                            <a href="assets/v11-photo-live.png" target="_blank" rel="noopener" class="block rounded-xl overflow-hidden border border-violet-100 bg-white">
+                                <img src="assets/v11-photo-live.png" loading="lazy" alt="大会照片直播二维码" class="w-full h-auto">
+                            </a>
+                            <p class="mt-2 text-xs text-violet-700">扫描图片中的二维码查看大会实时照片直播</p>
                         </div>
                     </div>
                 </div>
@@ -273,7 +343,7 @@
     </div>
 
     <!-- Data Injection & Interactive Scripts -->
-    <script src="data-v8.js?v=v9-20261029"></script>
+    <script src="data-v8.js?v=v11-20261030"></script>
     <script>
         const orgData = [
             { title: '协办单位', icon: '🤝', tone: 'emerald', content: '亚热带建筑与城市科学全国重点实验室、测绘遥感信息工程全国重点实验室、区域与城市生态安全全国重点实验室、自然资源部大湾区地理环境监测重点实验室、自然资源部城市国土资源监测与仿真重点实验室、自然资源部国土空间大数据技术创新中心、广东省城市空间信息工程重点实验室、深圳市空间信息智能感知与服务重点实验室、深圳市城市数字孪生技术重点实验室、粤港澳智慧城市联合实验室、深圳大学智慧城市研究院、河北省空天信息与智能化测绘重点实验室、厦门大学福建省城市智能感知与计算重点实验室、中山大学遥感科学与技术学院、中国林业科学研究院资源信息研究所、首都师范大学三维信息获取与应用教育部重点实验室、苏州科技大学地理科学与测绘工程学院、山东科技大学测绘与空间信息学院、重庆交通大学智慧城市学院、人工智能与数字经济广东省实验室(深圳)、广东工业大学土木与交通工程学院' },
@@ -287,7 +357,7 @@
             { time: '10月31日 08:30-09:00', title: '开幕式', loc: '酒店望海翼1楼 海上世界厅' },
             { time: '10月31日 09:00-12:10', title: '大会主旨报告', loc: '酒店望海翼1楼 海上世界厅' },
             { time: '10月31日 12:30-13:30', title: '午餐', loc: '酒店望海翼、南海翼餐厅' },
-            { time: '10月31日 13:30-18:30', title: '分论坛、优秀论文答辩与快闪报告、点云数据处理大赛', loc: '酒店望海翼、南海翼各分会场' },
+            { time: '10月31日 13:30-18:37', title: '分论坛、优秀论文答辩与快闪报告、点云数据处理大赛', loc: '酒店望海翼、南海翼各分会场' },
             { time: '10月31日 17:30-18:30', title: '专委会会议', loc: '酒店望海翼2楼 招商堂4' },
             { time: '10月31日 19:00-21:30', title: '晚宴', loc: '酒店望海翼1楼 海上世界厅' },
             { time: '11月1日 08:00-12:30', title: '分论坛报告', loc: '酒店望海翼各分会场' },
@@ -327,85 +397,85 @@
         ];
 
         const keynotesData = [
-            { 
-                name: '李清泉', 
-                org: '深圳大学', 
+            {
+                name: '李清泉',
+                org: '深圳大学',
                 time: '10月31日 09:00-09:30', host: '王瑞胜',
-                title: '受限空间无人自主测绘技术、装备及应用', 
+                title: '受限空间无人自主测绘技术、装备及应用',
                 bio: '中国工程院院士，长期从事精密工程测量与自主测绘理论与技术研究，形成了动态精密工程测量技术体系，突破瞬时变形、表观变形和内部变形测量关键难题；发明研制了激光动态弯沉检测装备、移动道路检测车、隧道检测装备、地铁测量小车等系列高端测量专用装备，显著提升我国基础设施状态测量技术水平。出版专著5部，在Science、测绘学报等期刊发表论文300余篇。获国家技术发明奖二等奖1项，国家科学技术进步奖二等奖2项，国家科技进步创新团队奖1项，国家教学成果二等奖1项，何梁何利科技进步奖，省部级科技进步一等奖7项(第一)，中国青年科技奖，全国十大测绘科技创新人物、全国创新争先奖等。',
-                abstract: '受限空间(如隧道、溶洞、矿井、核电站等)具有卫星信号拒止、环境未知、空间结构复杂、通讯受限、场景特征退化等问题，人工测绘作业效率低、安全风险高、测绘数据质量难以保障，是受限空间认知、勘测和开发利用的关键瓶颈。本报告介绍团队在受限空间无人系统自主测绘方面的最新理论研究与装备研制进展，包括四足机器人具身三维测图技术、无人机自主巡检技术、水下光学精密测量技术等，形成了系列具有自主知识产权的无人自主测绘装备及系统，提升多样化受限空间场景下无人系统自主测绘作业能力。' 
+                abstract: '受限空间(如隧道、溶洞、矿井、核电站等)具有卫星信号拒止、环境未知、空间结构复杂、通讯受限、场景特征退化等问题，人工测绘作业效率低、安全风险高、测绘数据质量难以保障，是受限空间认知、勘测和开发利用的关键瓶颈。本报告介绍团队在受限空间无人系统自主测绘方面的最新理论研究与装备研制进展，包括四足机器人具身三维测图技术、无人机自主巡检技术、水下光学精密测量技术等，形成了系列具有自主知识产权的无人自主测绘装备及系统，提升多样化受限空间场景下无人系统自主测绘作业能力。'
             },
-            { 
-                name: '史文中', 
-                org: '香港理工大学', 
+            {
+                name: '史文中',
+                org: '香港理工大学',
                 time: '10月31日 09:30-10:00', host: '王瑞胜',
-                title: '新一代高精度 LiDAR 移动测量技术发展', 
-                bio: '国际欧亚科学院院士，英国社会科学学院院士，香港理工大学地理信息系统及遥感讲座教授、潘乐陶慈善基金智慧城市研究院院长，香港理工大学深圳技术创新研究院(福田)院长，担任国际城市信息学会(International Society for Urban Informatics)主席以及国际期刊《城市信息学》(Urban Informatics)主编。',
-                abstract: '移动测量技术正经历从影像测图向集成影像与LiDAR的三维测量、从依赖GNSS/INS直接获取地理参考向融合SLAM的自主定位建图转变。其核心目标也由三维数据采集，逐步拓展为定位、建图与目标提取的一体化协同。LiDAR显著增强了复杂场景下的三维感知与精细表达能力，同时也带来了多传感器时空基准统一、运动点云配准、GNSS受限于几何退化环境下的误差控制，以及海量点云信息智能提取等关键问题。本讲座将结合团队的相关研究工作，介绍多传感器标定与融合、LiDAR里程计与建图、结构约束与全局优化、点云语义建模等方面的研究进展，阐述如何利用多源观测与场景结构信息提高移动测量系统的定位精度、建图质量和环境理解能力。' 
+                title: '新一代高精度 LiDAR 移动测量技术发展',
+                bio: '国际欧亚科学院院士，英国社会科学学院院士，香港理工大学地理信息系统及遥感讲座教授、潘乐陶慈善基金智慧城市研究院院长，香港理工大学深圳技术创新研究院(福田)院长，担任国际城市信息学会(International Society for Urban Informatics)主席以及国际期刊《城市信息学》(Urban Informatics)主编',
+                abstract: '移动测量技术正经历从影像测图向集成影像与LiDAR的三维测量、从依赖GNSS/INS直接获取地理参考向融合SLAM的自主定位建图转变。其核心目标也由三维数据采集，逐步拓展为定位、建图与目标提取的一体化协同。LiDAR显著增强了复杂场景下的三维感知与精细表达能力，同时也带来了多传感器时空基准统一、运动点云配准、GNSS受限于几何退化环境下的误差控制，以及海量点云信息智能提取等关键问题。本讲座将结合团队的相关研究工作，介绍多传感器标定与融合、LiDAR里程计与建图、结构约束与全局优化、点云语义建模等方面的研究进展，阐述如何利用多源观测与场景结构信息提高移动测量系统的定位精度、建图质量和环境理解能力。在此基础上，进一步讨论移动测量由三维数据获取向“定位—建图—认知”协同发展的技术路径。最后，面向实景三维建设和城市空间更新需求，分析自主测绘、空间智能与动态场景表达对移动测量技术提出的新要求，并展望其未来发展。'
             },
-            { 
-                name: 'Long QUAN', 
-                org: '香港科技大学', 
+            {
+                name: 'Long QUAN',
+                org: '香港科技大学',
                 time: '10月31日 10:10-10:40', host: '王成',
-                title: 'From a deterministic reconstruction to a probabilistic generation of computer vision: does it lead to a unified spatial and physical world representation?', 
-                bio: 'Professor of the Department of Computer Science and Engineering at the Hong Kong University of Science and Technology. Long Quan received the Ph.D. in Computer Science at INRIA (France) in 1989. Before joining the Department of Computer Science at the Hong Kong University of Science and Technology (HKUST) in 2001 to found the HKUST computer vision group, he has been one of the founding members of INRIA Grenoble Computer Vision Group since 1990. He directed the founding best French PhD thesis in computer science, le prix de these Gilles Kahn in 1998, the Piero Zamperoni Best Student Paper Award in 2000, the first of six highlights of Siggraph 2007, the Best Student Poster Paper of CVPR 2008, and the ICPR 2020 Best Student Paper Award. Served as General Chair of ICCV 2011 and IEEE CVPR 2022, IEEE Fellow, founded HKUST start-up Altizure.com (acquired by Apple), and served as Distinguished Scientific Advisor of Apple.',
-                abstract: 'I will first review the development of computer vision in reconstruction and understanding in the past. Then I will discuss the rapid development and the state of the art of the generative approaches in discrete languages, and continuous images and videos, then focus more on discussing the very mathematical nature of language and visual data representation, therefore on the nature of 3D generative representations in different spaces, and on the search of unified representation space in computable architectures for spatial and physical world modeling.' 
+                title: 'From a deterministic reconstruction to a probabilistic generation of computer vision: does it lead to a unified spatial and physical world representation?',
+                bio: 'Long QUAN is a Professor of the Department of Computer Science and Engineering at the Hong Kong University of Science and Technology. Long Quan received the Ph.D. in Computer Science at INRIA (France) in 1989. Before joining the Department of Computer Science at the Hong Kong University of Science and Technology (HKUST) in 2001 to found the HKUST computer vision group, he has been one of the founding members of INRIA Grenoble Computer Vision Group since 1990. He directed the founding best French PhD thesis in computer science, le prix de these Gilles Kahn in 1998, the Piero Zamperoni Best Student Paper Award in 2000, the first of six highlights of Siggraph 2007, the Best Student Poster Paper of CVPR 2008, and the ICPR 2020 Best Student Paper Award. He has served as a General Chair of the ICCV 2011 in Barcelona, and a General Chair of the IEEE CVPR 2022 in New Orleans. He has also served as a Program Chair of ICPR 2006 Computer Vision and Image Analysis, a Program Chair of ICPR 2012 Computer and Robot Vision. He is an IEEE Fellow of the Computer Society. He has founded the HKUST start-up Altizure.com, which has been acquired by Apple. He has also served as a Distinguished Scientific Advisor of Apple.',
+                abstract: 'I will first review the development of computer vision in reconstruction and understanding in the past. Then I will discuss the rapid development and the state of the art of the generative approaches in discrete languages, and continuous images and videos, then focus more on discussing the very mathematical nature of language and visual data representation, therefore on the nature of 3D generative representations in different spaces, and on the search of unified representation space in computable architectures for spatial and physical world modeling.'
             },
-            { 
-                name: '朱庆', 
-                org: '西南交通大学', 
+            {
+                name: '朱庆',
+                org: '西南交通大学',
                 time: '10月31日 10:40-11:10', host: '王成',
-                title: '多源数据融合的三维城市模型智能更新', 
+                title: '多源数据融合的三维城市模型智能更新',
                 bio: '西南交通大学学术委员会副主任，国务院学科评议组成员，实景三维中国建设专家组成员，教育部长江学者特聘教授，新世纪百千万人才工程国家级人选，国家测绘地理信息局科技领军人才，首批四川省教书育人名师，四川省高校优秀共产党员，最美铁道科技工作者，智慧城市先锋榜领军人物，四川省智慧城乡大数据应用研究会会长。长期从事地球空间信息学的教学与科研工作，在数字高程模型、三维地理信息系统和数字孪生等方面做了基础性和开拓性工作。',
-                abstract: '三维城市模型是数字中国和智慧社会建设的关键基础信息，主要生命力在于现势性。然而，已有更新方法数据源单一且主要依赖人工，一个城市域的三维城市模型更新速度远远落后于城市更新的实际情况，严重制约城市的精准化管理应用。报告介绍了多源数据融合的单体化三维城市模型智能更新方法，根据倾斜影像和激光扫描点云等多源数据在分辨率、精度和噪声特点等方面的互补特点，创新时序三维数据的非监督自主学习和模型的记忆更新，显著提升城市尺度三维更新建模的自动化程度。' 
+                abstract: '三维城市模型是数字中国和智慧社会建设的关键基础信息，主要生命力在于现势性。然而，已有更新方法数据源单一且主要依赖人工，一个城市域的三维城市模型更新速度远远落后于城市更新的实际情况，严重制约城市的精准化管理应用。报告介绍了多源数据融合的单体化三维城市模型智能更新方法，根据倾斜影像和激光扫描点云等多源数据在分辨率、精度和噪声特点等方面的互补特点，创新时序三维数据的非监督自主学习和模型的记忆更新，显著提升城市尺度三维更新建模的自动化程度，包括二三维特征点统一描述的自主对比学习，获取多源多维数据的匹配信息；多源数据高精度几何信息整体平差，消除多源数据几何不一致性；时序多点云数据的非监督表征学习与场景理解，发现广域城市实体要素变化；城市要素实体的参数化三维更新建模，动态构建精细三维模型。'
             },
-            { 
-                name: '王力哲', 
-                org: '清华大学深圳国际研究生院', 
+            {
+                name: '王力哲',
+                org: '清华大学深圳国际研究生院',
                 time: '10月31日 11:10-11:40', host: '王成',
-                title: '下一代激光雷达及海岛礁环境遥感探测', 
+                title: '下一代激光雷达及海岛礁环境遥感探测',
                 bio: '清华大学深圳国际研究生院长聘教授，国家杰出青年基金获得者、“万人计划”科技创新领军人才、中科院“百人计划”引进国外杰出人才、欧洲科学院(Academia Europaea)院士、国际电气电子工程师协会会士(IEEE Fellow)、国际光学学会会士(SPIE Fellow)。主要研究领域是商业航天卫星技术、遥感信息工程、数字地球。',
-                abstract: '海岛礁环境是生态环境、国防安全、海洋经济的国家重大需求；海岛礁环境是全球变化的敏感指示器，海岛礁环境探测是理解海岛礁环境物质循环的重要前提。本次报告介绍全波形激光雷达、光子计数激光雷达、高光谱激光雷达、混合体制激光雷达等探测原理，及其在海岛礁环境几何要素和物质要素探测的探测技术体系。' 
+                abstract: '海岛礁环境是生态环境、国防安全、海洋经济的国家重大需求；海岛礁环境是全球变化的敏感指示器，海岛礁环境探测是理解海岛礁环境物质循环的重要前提。本次报告介绍全波形激光雷达、光子计数激光雷达、高光谱激光雷达、混合体制激光雷达等探测原理，及其在海岛礁环境几何要素和物质要素探测的探测技术体系。'
             },
-            { 
-                name: '王程', 
-                org: '厦门大学', 
+            {
+                name: '王程',
+                org: '厦门大学',
                 time: '10月31日 11:40-12:10', host: '王成',
-                title: '激光雷达赋能城市空间智能:从三维感知计算到时空智能演进', 
-                bio: '南强特聘教授，国家“万人计划”入选者，IET会士。空间感知与计算实验室(ASC Lab)带头人，担任福建省城市智能感知与计算重点实验室主任，ISPRS传感器系统分会主席。长期致力于空间智能、传感探测的研究。谷歌引用20000余次，入选斯坦福全球前2%顶尖科学家。曾获省级科技进步一等奖、省级教学成果特等奖、国际摄影测量与遥感学会朱塞佩英吉利奖。',
-                abstract: '从三维感知计算走向空间智能、时空智能是城市智能发展的重要方向，统一时空基准是时空智能的核心基础。本报告阐述该演进路线的核心理念，探讨激光雷达为具身平台建立时空基准、激光雷达与多传感器融合感知、多智能体协同等技术路径；介绍基于激光雷达支撑人机空间融合。报告梳理ASC实验室近年来以激光雷达为核心的三维空间感知与计算相关进展，探索面向城市空间智能的可行技术路径，展望时空智能发展范式。' 
+                title: '激光雷达赋能城市空间智能:从三维感知计算到时空智能演进',
+                bio: '国家“万人计划”入选者，IET会士。空间感知与计算实验室(ASC Lab)带头人，担任福建省城市智能感知与计算重点实验室主任，ISPRS传感器系统分会主席。长期致力于空间智能、传感探测的研究。谷歌引用20000余次，入选斯坦福全球前2%顶尖科学家。曾获省级科技进步一等奖、省级教学成果特等奖、国际摄影测量与遥感学会朱塞佩英吉利奖。',
+                abstract: '从三维感知计算走向空间智能、时空智能是城市智能发展的重要方向，统一时空基准是时空智能的核心基础。本报告阐述该演进路线的核心理念，探讨激光雷达为具身平台建立时空基准、激光雷达与多传感器融合感知、多智能体协同等技术路径；介绍基于激光雷达支撑人机空间融合。报告梳理ASC实验室近年来以激光雷达为核心的三维空间感知与计算相关进展，探索面向城市空间智能的可行技术路径，展望时空智能发展范式。'
             },
-            { 
-                name: '刘春', 
-                org: '同济大学', 
+            {
+                name: '刘春',
+                org: '同济大学',
                 time: '11月1日 14:00-14:30', host: '毛庆洲',
-                title: '泛化点云的智能理解与典型场景应用', 
+                title: '泛化点云的智能理解与典型场景应用',
                 bio: '二级教授，同济大学长聘特聘教授，博士生导师，享受国务院政府特殊津贴专家，国家高层次人才计划入选者，国家重点研发计划项目首席科学家，自然资源部科技创新领军人才，上海市优秀学术带头人。同济大学国家卓越工程师学院常务副院长、国际工程师学院常务副院长、研究生院副院长。获国家科技进步二等奖、上海市科技进步一等奖和自然资源科技进步一等奖等10多项科技奖励。授权国家发明专利30余项，软件著作权登记20项，出版中英文合著8部，发表论文300多篇。',
-                abstract: '激光雷达点云是三维空间感知的核心数据载体，当前主流智能解析方法存在场景适配性弱、跨模态点云数据兼容性差、数据高维处理难等问题，难以适配复杂真实工况，限制了激光雷达技术的规模化工程应用.报告聚焦点云基于高维张量空间的智能感知关键技术，针对非受控环境下点云稀疏残缺、噪声干扰、地物形态多变等痛点，融合先验知识与深度学习算法，构建了高鲁棒性的泛化点云智能理解框架。突破异源点云归一化、小样本语义分割、多尺度结构特征提取等核心技术，有效摆脱传统算法对设备参数、采集视角和海量标注数据的依赖。' 
+                abstract: '激光雷达点云是三维空间感知的核心数据载体，当前主流智能解析方法存在场景适配性弱、跨模态点云数据兼容性差、数据高维处理难等问题，难以适配复杂真实工况，限制了激光雷达技术的规模化工程应用。报告聚焦点云基于高维张量空间的智能感知关键技术，针对非受控环境下点云稀疏残缺、噪声干扰、地物形态多变等痛点，融合先验知识与深度学习算法，构建了高鲁棒性的泛化点云智能理解框架。突破异源点云归一化、小样本语义分割、多尺度结构特征提取等核心技术，有效摆脱传统算法对设备参数、采集视角和海量标注数据的依赖。本报告重点介绍系列关键技术成果，并展示其在重大交通基础设施运维监测、城市实景三维建模、低空空地协同测绘等典型场景的落地应用效果。研究实现了点云解析从场景定制化到通用泛化的技术升级，为实景三维中国建设、基础设施智能化安全运维提供了高效、可靠的技术支撑，同时探讨了国产激光雷达软硬件融合与工程智能化感知的未来发展方向。'
             },
-            { 
-                name: '钟若飞', 
-                org: '首都师范大学', 
+            {
+                name: '钟若飞',
+                org: '首都师范大学',
                 time: '11月1日 14:30-15:00', host: '毛庆洲',
-                title: '从地面到太空:多平台三维信息获取与自主无人系统探索', 
-                bio: '首都师范大学燕京特设讲席教授，资源环境与旅游学院学术委员会主任，博士生导师，北京市科技新星、首都高聚工程科技创新领军人才。担任三维信息获取与应用教育部重点实验室主任，国际数字地球学会中国国家委员会激光雷达专业委员会副主任，中国地理信息产业协会高精地图工委会副主任，国际摄影测量与遥感学会多传感器融合工作组联合主席。曾获自然资源科学技术二等奖、中国测绘学会科技进步一等奖等省部级奖励10余项，发表论文149篇，获授权专利70余项。',
-                abstract: '围绕先进遥感与自主无人系统交叉融合方向，本报告介绍多平台三维环境建模技术从地面向太空延伸的技术实践。团队以相机、激光雷达为核心传感器，依托车载、机载、无人机、卫星多类平台开展三维空间数据获取研究。早期突破无控制移动激光测量关键技术；针对地下室、矿洞等无GNSS封闭复杂环境，攻关自主探索防撞无人机，解决封闭空间自主测绘、实时建图、障碍规避难题。面向太空领域创新在轨智能处理模式，实现卫星在轨变化检测、双线阵动目标识别，提升遥感观测时效；进一步探索200公里级超低轨实景三维卫星。' 
+                title: '从地面到太空:多平台三维信息获取与自主无人系统探索',
+                bio: '首都师范大学燕京特设讲席教授，资源环境与旅游学院学术委员会主任，博士生导师，北京市科技新星、首都高聚工程科技创新领军人才。担任三维信息获取与应用教育部重点实验室主任，国际数字地球学会中国国家委员会激光雷达专业委员会副主任，中国地理信息产业协会高精地图工委会副主任，国际摄影测量与遥感学会多传感器融合工作组联合主席。曾获自然资源科学技术二等奖、中国测绘学会科技进步一等奖、中国地理信息产业学会科技进步一等奖、北京市科技进步三等奖、广东省科技进步三等奖、北京市发明专利三等奖等省部级奖励10余项。发表论文149篇。获授权专利70余项，国际专利4项。参与颁布国家标准1项和团体标准2项。',
+                abstract: '围绕先进遥感与自主无人系统交叉融合方向，本报告介绍多平台三维环境建模技术从地面向太空延伸的技术实践。团队以相机、激光雷达为核心传感器，依托车载、机载、无人机、卫星多类平台开展三维空间数据获取研究。早期突破无控制移动激光测量关键技术，实现室外场景快速三维采集；针对地下室、矿洞等无GNSS封闭复杂环境，攻关自主探索防撞无人机，解决封闭空间自主测绘、实时建图、障碍规避难题，支撑人员难以抵达区域的测绘作业。面向太空遥感领域，围绕“直播地球”项目创新在轨智能处理模式，将“事件相机”原理往太空迁移，实现卫星在轨变化检测、双线阵动目标识别，优先回传关键信息，提升遥感观测时效；进一步探索200公里级超低轨实景三维卫星，将航空面阵相机做太空化改造，以更低成本获取高空间分辨率影像，支撑精细化实景三维重建。研究坚持面向实际应用需求，打通技术研发、场景验证与成果转化，致力于实现全域更快、更准、更安全的三维空间信息获取，为复杂场景测绘、应急感知等应用提供技术支撑。'
             },
-            { 
-                name: '姚巍', 
-                org: '中国科学院城市环境研究所', 
+            {
+                name: '姚巍',
+                org: '中国科学院城市环境研究所',
                 time: '11月1日 15:00-15:30', host: '毛庆洲',
-                title: '面向复杂场景的激光视觉感知和混合智能计算', 
-                bio: '长期从事环境空间信息学研究，建立并提出了激光视觉三维感知和智能计算理论与方法体系。研发了弱/稀疏信号目标三维结构重建、多源异质空间信息融合和可解释人工智能驱动的环境空间目标解译等新技术。曾在德国和中国香港国际知名高校及科研机构任教授、博导，高级研究科学家和课题组长。在国内外权威学术杂志和会议发表文章近200篇，获得国际和国家级科研奖励8项。担任6家领域内权威杂志编委或副主编，IEEE高级会员，自2022年起连续入选“全球首2%顶尖科学家”。',
-                abstract: '本报告聚焦复杂场景下激光视觉感知与智能计算的核心理论问题-激光视觉三维成像和混合智能计算理论。面向城市建成环境与自然生态环境中空间结构多样、感知机制复杂及不确定性高度耦合的共性挑战，系统梳理并构建多源三维感知与智能计算的一体化研究框架。报告从感知机理、数据融合、表征模型与推理解译方法等多个关键技术层面，深入分析激光雷达与视觉信息在几何、语义与时序维度上的互补关系，提出融合物理模型驱动与数据驱动的混合智能计算理论体系。' 
+                title: '面向复杂场景的激光视觉感知和混合智能计算',
+                bio: '长期从事环境空间信息学研究，建立并提出了激光视觉三维感知和智能计算理论与方法体系。研发了弱/稀疏信号目标三维结构重建、多源异质空间信息融合和可解释人工智能驱动的环境空间目标解译等新技术，实现了城市与自然环境中体散射目标的三维精细表征、解译与建模，以及覆盖其余惯常动静态目标的结构提取、状态预测和属性估计。其成果被国内外广泛采用，并在自然生态系统和城市建成环境领域取得规模化工程应用实效。曾在德国和中国香港国际知名高校及科研机构任教授、博导，高级研究科学家和课题组长。在国内外权威学术杂志和会议发表文章近200篇，获得国际和国家级科研奖励8项。担任6家领域内权威杂志编委或副主编，5个国家自然科学基金项目评审专家，75家遥感、空间人工智能和计算机视觉领域权威杂志评审人。IEEE高级会员，自2022年起连续入选「全球首2%顶尖科学家」。担任国际摄影测量与遥感学会无人自主感知测量系统工作组共同主席、国际制图学会地理空间数据分析方法学委员会共同主席。入选国家重大人才计划创新项目、中国科学院杰出引进人才和福建省百人计划等人才项目。',
+                abstract: '本报告聚焦复杂场景下激光视觉感知与智能计算的核心理论问题-激光视觉三维成像和混合智能计算理论。面向城市建成环境与自然生态环境中空间结构多样、感知机制复杂及不确定性高度耦合的共性挑战，系统梳理并构建多源三维感知与智能计算的一体化研究框架。报告从感知机理、数据融合、表征模型与推理解译方法等多个关键技术层面，深入分析激光雷达与视觉信息在几何、语义与时序维度上的互补关系，提出融合物理模型驱动与数据驱动的混合智能计算理论体系。研究进一步围绕城市建成环境中的规则几何结构与自然环境中的非结构化空间形态，探讨多尺度、多层次目标三维表征方法及其一致性约束优化机制。相关理论分析与实验验证表明，该框架在提升复杂场景精准感知鲁棒性与可解释性方面具有明显优势，为复杂环境下自主智能感知系统的理论研究和技术创新提供了新的思路。'
             },
-            { 
-                name: '蓝煜然', 
-                org: '深圳大疆创新科技有限公司', 
+            {
+                name: '蓝煜然',
+                org: '深圳大疆创新科技有限公司',
                 time: '11月1日 15:30-16:00', host: '毛庆洲',
-                title: '大疆行业应用机载激光雷达一体化解决方案-以禅思L3为例', 
+                title: '大疆行业应用机载激光雷达一体化解决方案-以禅思L3为例',
                 bio: '大疆行业应用解决方案工程师，注册测绘师，长期从事无人机摄影测量和激光雷达泛测绘行业应用方案落地，拥有丰富的一线方案交付、项目实施、与技术培训经验。',
-                abstract: '本报告以大疆禅思L3为核心，介绍面向行业应用的机载激光雷达一体化解决方案，阐述任务规划、外业采集、点云处理及成果输出的全流程作业方法。结合地形测绘、电力巡检、林业调查等典型场景，探讨系统协同、数据质量控制与应用价值，为无人机激光雷达的工程化应用提供参考。' 
+                abstract: '本报告以大疆禅思L3为核心，介绍面向行业应用的机载激光雷达一体化解决方案，阐述任务规划、外业采集、点云处理及成果输出的全流程作业方法。结合地形测绘、电力巡检、林业调查等典型场景，探讨系统协同、数据质量控制与应用价值，为无人机激光雷达的工程化应用提供参考。'
             }
         ];
 
@@ -650,7 +720,7 @@
             ]}
         ];
 
-        // 旧版内嵌名单仅保留作历史对照；页面实际使用 data-v8.js 中经 V9 手册核对的数据。
+        // 旧版内嵌名单仅作历史存档，不参与页面渲染；当前页面统一使用 data-v8.js 中经 V11 手册核对的数据。
         const legacySpecialEventsData = [
             { title: '点云数据处理大赛(一)', time: '10月31日 14:00-17:35', loc: '南海翼LF层南海堂1', conveners: '大赛组委会', talks: [
                 '14:00-14:05 | 赛道二/huangzixuan (报告人: 孙雪航) - 武汉大学测绘遥感信息工程全国重点实验室',
@@ -1174,6 +1244,9 @@
                             <p><strong>撤展时间：</strong>10月31日 21:30-23:59</p>
                             <p><strong>说明：</strong>海报展架编号与报告编号一致。</p>
                         </div>
+                        <a href="assets/v11-poster-layout.png" target="_blank" rel="noopener" class="block rounded-xl overflow-hidden border border-emerald-100 bg-emerald-50 mb-3">
+                            <img src="assets/v11-poster-layout.png" loading="lazy" alt="海报分布图与张贴、展示、撤展时间" class="w-full h-auto">
+                        </a>
                         <div class="space-y-2">
                             ${posterData.map(p => `
                                 <div class="grid grid-cols-[58px_1fr] gap-2 rounded-lg border border-gray-100 bg-gray-50 p-2.5">

@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>第10届全国激光雷达大会会议手册</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Noto Sans SC"', 'sans-serif'] },
+                    colors: { theme: { blue: '#1d4ed8', dark: '#0f172a', light: '#f8fafc' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .bg-starry {
+            background-image: radial-gradient(circle at center, #1e3a8a 0%, #0f172a 100%);
+            position: relative;
+        }
+        .bg-starry::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="1" fill="white" opacity="0.3"/><circle cx="80" cy="40" r="1.5" fill="white" opacity="0.4"/><circle cx="40" cy="80" r="1" fill="white" opacity="0.2"/></svg>');
+            background-size: 100px 100px; opacity: 0.5; z-index: 0;
+        }
+        .content-layer { position: relative; z-index: 1; }
+        .accordion-content { transition: max-height 0.3s ease-in-out, opacity 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+        .accordion-content.expanded { max-height: 3000px; opacity: 1; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 antialiased selection:bg-blue-200">
+
+    <div class="max-w-2xl mx-auto bg-white min-h-screen relative shadow-2xl overflow-hidden flex flex-col">
+        
+        <!-- Header -->
+        <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 px-4 py-3 flex justify-between items-center transition-all duration-300">
+            <div class="font-bold text-lg text-theme-dark truncate">激光雷达大会电子手册</div>
+            <button id="menuBtn" class="p-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 active:scale-95" aria-label="打开菜单">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+            </button>
+        </header>
+
+        <!-- Sidebar Menu -->
+        <div id="drawerOverlay" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity opacity-0"></div>
+        <div id="drawerMenu" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
+            <div class="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+                <span class="font-bold text-gray-800 text-lg">会议目录</span>
+                <button id="closeMenuBtn" class="p-2 rounded-full bg-white text-gray-500 shadow-sm active:scale-95">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <nav class="flex-1 overflow-y-auto p-4 space-y-1 menu-links">
+                <a href="#hero" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">📍 首页 (封面)</a>
+                <a href="#intro" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">📖 大会简介 & 机构</a>
+                <a href="#schedule-overview" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">📅 日程总览</a>
+                <a href="#keynotes" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">🎤 大会主旨报告</a>
+                <a href="#sessions" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">📝 专题报告与分会场</a>
+                <a href="#special-events" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">🏆 赛事与青年论文/快闪报告</a>
+                <a href="#logistics" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">🚗 交通指南</a>
+                <a href="#dining" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">🍽️ 用餐与须知</a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto no-scrollbar scroll-smooth">
+            
+            <!-- Hero Section -->
+            <section id="hero" class="bg-starry text-white pt-16 pb-20 px-6 text-center shadow-inner">
+                <div class="content-layer">
+                    <div class="inline-block px-3 py-1 rounded-full bg-white/20 border border-white/30 text-sm mb-6">2026/10/30 - 11/1</div>
+                    <h2 class="text-4xl font-black mb-2 tracking-tight">第10届</h2>
+                    <h1 class="text-5xl font-black mb-6 tracking-wider bg-clip-text text-transparent bg-gradient-to-b from-white to-blue-200">全国激光雷达<br>大会</h1>
+                    <div class="w-16 h-1 bg-blue-400 mx-auto mb-6 rounded-full"></div>
+                    <p class="text-2xl font-bold tracking-[0.2em] mb-8">会议手册</p>
+                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-5 text-sm space-y-3 border border-white/10 text-left">
+                        <div class="flex items-start"><span class="font-bold text-blue-300 w-20 shrink-0">地点</span><span>中国·深圳 (CHINA·SHENZHEN)</span></div>
+                        <div class="flex items-start"><span class="font-bold text-blue-300 w-20 shrink-0">主办单位</span><span>国际数字地球学会中国国家委员会激光雷达专业委员会</span></div>
+                        <div class="flex items-start"><span class="font-bold text-blue-300 w-20 shrink-0">承办单位</span><span>深圳大学</span></div>
+                        <div class="flex items-start"><span class="font-bold text-blue-300 w-20 shrink-0">指导单位</span><span>国际数字地球学会中国国家委员会</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Intro & Org -->
+        <section id="intro" class="p-6 pt-10 scroll-mt-12 border-b border-gray-100">
+            <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-6"><div class="w-2 h-6 bg-blue-600 rounded-full mr-3"></div>大会简介与组织机构</h3>
+            <div class="bg-blue-50 rounded-2xl p-5 text-gray-700 text-sm leading-relaxed text-justify space-y-4 border border-blue-100 mb-6">
+                <p>激光雷达专业委员会是国际数字地球学会中国国家委员会下设的全国性学术交流机构，于2012年7月成立，其宗旨为：积极推动激光雷达领域的基础理论、前沿技术和创新应用发展，为全国激光雷达工作者提供学术交流与合作的平台。在成功举办九届全国激光雷达大会的基础上，为进一步促进前沿激光雷达遥感技术深入交流与探讨，定于<strong>2026年10月30日—11月1日</strong>在<strong>深圳</strong>举办第10届全国激光雷达大会。</p>
+                <p>本届会议将针对激光雷达的基础理论、硬件系统、前沿方法、行业应用等方面的难点和热点问题进行交流，同时大会还将举行激光扫描数据处理大赛、激光雷达遥感讲课比赛、评选全国激光雷达优秀博士论文等。</p>
+            </div>
+
+            <!-- 组织委员会 -->
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 mb-4">
+                <h4 class="font-bold text-gray-800 mb-2 text-sm text-blue-900 border-b pb-1">组织委员会</h4>
+                <div class="space-y-2 text-xs text-gray-600">
+                    <p><strong>大会主席：</strong>王瑞胜</p>
+                    <p><strong>主任 (按照姓氏笔画排序)：</strong>王伟玺、汤圣君、汪驰升、张星、周昆、郭波</p>
+                    <p><strong>副主任 (按照姓氏笔画排序)：</strong>习晓环、马培峰、王冰、王松、方立、石铁柱、刘缘、米晓新、李游、杨波、汪汉云、张鸿生、陈一平、陈智鹏、林浩嘉、周宝定、赵吴凡、姜三、原志路、徐南、郭裕兰、温程璐、谢林甫、蒯希</p>
+                    <p><strong>秘书处 (按照姓氏笔画排序)：</strong>王欣、张新梅</p>
+                </div>
+            </div>
+
+            <!-- 学术委员会 -->
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 mb-4">
+                <h4 class="font-bold text-gray-800 mb-2 text-sm text-blue-900 border-b pb-1">学术委员会</h4>
+                <div class="space-y-2 text-xs text-gray-600">
+                    <p><strong>主任：</strong>郭华东、郭仁忠、李清泉</p>
+                    <p><strong>副主任 (按照姓氏笔画排序)：</strong>王成、王程、王瑞胜、朱精果、刘东、刘春、杨必胜、钟若飞、姚巍、黄正东、黄华国、康志忠、程亮</p>
+                    <p><strong>委员 (按照姓氏笔画排序)：</strong>张立强、张吴明、庞勇、习晓环、习通源、马为红、马威、马凌飞、马跃、马勤、王永志、王永君、王伟玺、王冰、王红、王丽英、王宏涛、王国飞、王迪、王和平、王艳军、王健、王继伟、王跃宾、韦朋成、尤号田、毛庆洲、方立、方莉娜、尹超、付安民、白杰、邢帅、邢艳秋、年雁云、危双丰、刘正军、刘伟、刘伟权、刘如飞、刘茂华、刘海建、刘婧、关宏灿、米晓新、汤圣君、许志华、许磊、孙华、孙海丽、孙颖、劳洁英、苏中花、苏伟、苏艳军、杜黎明、李世华、李由、李必军、李加元、李伟、李江、李志才、李贤、李国元、李明磊、李朋飞、李京、李彦、李健、李渭、李媛、李巍岳、杨元维、杨学博、杨荣华、杨秋丽、杨俊涛、杨浩、杨智翔、肖文、吴杭彬、吴建锋、吴宾、吴德成、余柏蒗、应申、汪汉云、汪驰升、汪沛、汪垚、沈月千、沈思淇、宋沙磊、张书航、张云生、张正华、张正鹏、张加龙、张苏、张丽娜、张迪、张星、张振鑫、张猛、张鸿生、张新伟、张磊、张鑫港、陈一平、陈动、陈驰、陈国良、陈思聪、陈海佳、陈焱明、林祥国、罗远、金时超、周雨、周昆、周宝定、周贵云、周梅、郑光、赵旦、赵洋、赵宝林、赵婷萱、胡炜、胡容海、侯妙乐、俞家勇、施贵刚、姜三、姜海兰、贺岩、秦楠楠、敖晟、袁德宝、耿利川、聂胜、贾东振、夏少波、钱立勇、倪文俭、徐文学、徐聿升、徐昇、徐南、徐嘉盛、栾奎峰、郭波、郭浩、郭裕兰、唐龙、唐炉亮、唐超、涂伟、陶武勇、黄华兵、黄明、黄佳鹏、黄荣、曹林、梁欣廉、宿殿鹏、谌一夫、葛旭明、董友强、董秀军、董震、韩晓旭、惠振阳、程峰、童瑞、温程璐、谢欢、谢俊峰、谢洪、谢津平、楚森森、赖旭东、雷印杰、鲍艳、满其霞、窦爱霞、蔡尚书、蔡国榕、蔺小虎、臧玉府、臧或、管海燕、漆建波、谭凯</p>
+                </div>
+            </div>
+
+            <div id="org-container" class="space-y-4"></div>
+        </section>
+
+            <!-- Schedule Overview -->
+            <section id="schedule-overview" class="p-6 scroll-mt-12 border-b border-gray-100 bg-gray-50">
+                <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-6"><div class="w-2 h-6 bg-blue-600 rounded-full mr-3"></div>日程总览</h3>
+                <div id="schedule-container" class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px before:h-full before:w-0.5 before:bg-blue-200"></div>
+            </section>
+
+            <!-- Keynotes -->
+            <section id="keynotes" class="p-6 scroll-mt-12 border-b border-gray-100">
+                <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-2"><div class="w-2 h-6 bg-blue-600 rounded-full mr-3"></div>大会主旨报告 (10场全收录)</h3>
+                <p class="text-xs text-gray-500 mb-4">点击下方专家卡片可展开，独立查看<strong>个人简介</strong>与<strong>报告简介</strong></p>
+                <div id="keynotes-container" class="space-y-3"></div>
+            </section>
+
+            <!-- Sessions -->
+            <section id="sessions" class="p-6 scroll-mt-12 border-b border-gray-100 bg-gray-50">
+                <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-2"><div class="w-2 h-6 bg-blue-600 rounded-full mr-3"></div>分会场及专题报告</h3>
+                <p class="text-xs text-gray-500 mb-6">点击下方各专题展开查看全部 26 个分会场的详细日程、召集人与报告清单</p>
+                <div id="sessions-container" class="space-y-3"></div>
+            </section>
+
+            <!-- Special Events (Contests, Youth) -->
+            <section id="special-events" class="p-6 scroll-mt-12 border-b border-gray-100">
+                <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-2"><div class="w-2 h-6 bg-blue-600 rounded-full mr-3"></div>数据比赛与优秀青年报告全名单</h3>
+                <p class="text-xs text-gray-500 mb-6">点击下方各个竞赛与学术专场展开查看详细的汇报时间、队伍、论文与主持人</p>
+                
+                <div id="special-events-container" class="space-y-3">
+                    <!-- Dynamic rendering via script below -->
+                </div>
+            </section>
+
+            <!-- Logistics -->
+            <section id="logistics" class="p-6 scroll-mt-12 border-b border-gray-100 bg-gray-50">
+                <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-6"><div class="w-2 h-6 bg-blue-600 rounded-full mr-3"></div>会务与出行指南</h3>
+                
+                <!-- 交通指南折叠标签 -->
+                <div class="border border-gray-200 rounded-xl bg-white mb-3 overflow-hidden shadow-sm">
+                    <button class="w-full text-left p-4 flex justify-between items-center bg-white hover:bg-gray-50 transition-colors" onclick="toggleAccordion(this)">
+                        <span class="font-bold text-gray-800 text-sm">🚗 交通指引 (深圳蛇口希尔顿南海酒店 望海翼)</span>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content bg-gray-50 text-sm border-t border-gray-100">
+                        <div class="p-4 space-y-3 text-xs text-gray-600">
+                            <p><strong class="text-blue-600">深圳机场：</strong>打车约24.1公里(1.2h)。地铁11号线转12号线至<strong>海上世界站D口</strong>，步行640米。</p>
+                            <p><strong class="text-blue-600">深圳北站：</strong>打车约23公里(45m)。地铁5号线转12号线至<strong>海上世界站D口</strong>。</p>
+                            <p><strong class="text-blue-600">福田/罗湖站：</strong>换乘地铁至12号线<strong>海上世界站D口</strong>出站。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 用餐安排折叠标签 -->
+                <div class="border border-gray-200 rounded-xl bg-white mb-3 overflow-hidden shadow-sm">
+                    <button class="w-full text-left p-4 flex justify-between items-center bg-white hover:bg-gray-50 transition-colors" onclick="toggleAccordion(this)">
+                        <span class="font-bold text-gray-800 text-sm">🍽️ 用餐与须知安排</span>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content bg-gray-50 text-sm border-t border-gray-100">
+                        <div class="p-4 space-y-3 text-xs text-gray-700">
+                            <div class="bg-blue-50 border border-blue-100 rounded-lg p-3">
+                                <p class="font-bold text-blue-800 mb-1">用餐安排 (早餐自理)</p>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>10月31日：12:30午餐(按餐券) | 19:00晚宴(主会场)</li>
+                                    <li>11月1日：12:30午餐(按餐券)</li>
+                                </ul>
+                            </div>
+                            <div class="bg-yellow-50 border border-yellow-100 rounded-lg p-3">
+                                <p class="font-bold text-yellow-800 mb-1">参会须知</p>
+                                <p>参会证、餐券是唯一凭证。提前10分钟入场，手机静音。会议咨询处位于酒店(望海翼)1F-会议室1。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 大会联系方式折叠标签 -->
+                <div class="border border-gray-200 rounded-xl bg-white mb-3 overflow-hidden shadow-sm">
+                    <button class="w-full text-left p-4 flex justify-between items-center bg-white hover:bg-gray-50 transition-colors" onclick="toggleAccordion(this)">
+                        <span class="font-bold text-gray-800 text-sm">📞 大会核心联系方式</span>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content bg-gray-50 text-sm border-t border-gray-100">
+                        <div class="p-4 text-xs">
+                            <div class="grid grid-cols-2 gap-2 text-gray-600">
+                                <p>总务/数据: 汤圣君 18665363527</p>
+                                <p>注册: 王梦迪 15889637078</p>
+                                <p>讲课: 米晓新 18202776979</p>
+                                <p>海报: 周昆 18818785494</p>
+                                <p>餐饮: 张新梅 16625178068</p>
+                                <p>住宿/发票: 刘雪 19232058858</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <section class="p-6 bg-gray-50 pb-24 text-center">
+                <div class="mt-4 text-xs text-gray-400">
+                    <p>— 感谢您的参与 —</p>
+                    <p class="mt-1">© 2026 第10届全国激光雷达大会</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Nav -->
+        <nav class="absolute bottom-0 w-full bg-white border-t border-gray-200 flex justify-around pb-safe pt-2 pb-2 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-40">
+            <a href="#hero" class="flex flex-col items-center p-2 text-blue-600 nav-btn"><span class="text-[10px] font-medium mt-1">首页</span></a>
+            <a href="#schedule-overview" class="flex flex-col items-center p-2 text-gray-500 nav-btn"><span class="text-[10px] font-medium mt-1">日程</span></a>
+            <a href="#keynotes" class="flex flex-col items-center p-2 text-gray-500 nav-btn"><span class="text-[10px] font-medium mt-1">专家</span></a>
+            <a href="#sessions" class="flex flex-col items-center p-2 text-gray-500 nav-btn"><span class="text-[10px] font-medium mt-1">分会场</span></a>
+            <a href="#logistics" class="flex flex-col items-center p-2 text-gray-500 nav-btn"><span class="text-[10px] font-medium mt-1">指南</span></a>
+        </nav>
+    </div>
+
+    <!-- Data Injection & Interactive Scripts -->
+    <script>
+        const orgData = [
+            { title: '指导单位与主办单位', content: '指导单位：国际数字地球学会中国国家委员会<br>主办单位：国际数字地球学会中国国家委员会激光雷达专业委员会<br>承办单位：深圳大学' },
+            { title: '协办单位 / 组织机构', content: '亚热带建筑与城市科学全国重点实验室、测绘遥感信息工程全国重点实验室、区域与城市生态安全全国重点实验室、自然资源部大湾区地理环境监测重点实验室、自然资源部城市国土资源监测与仿真重点实验室、自然资源部国土空间大数据技术创新中心、广东省城市空间信息工程重点实验室、深圳市空间信息智能感知与服务重点实验室、深圳市城市数字孪生技术重点实验室、粤港澳智慧城市联合实验室、深圳大学智慧城市研究院、河北省空天信息与智能化测绘重点实验室、厦门大学福建省城市智能感知与计算重点实验室、中山大学遥感科学与技术学院、中国林业科学研究院资源信息研究所、首都师范大学三维信息获取与应用教育部重点实验室、苏州科技大学地理科学与测绘工程学院、山东科技大学测绘与空间信息学院、重庆交通大学智慧城市学院、人工智能与数字经济广东省实验室(深圳)、广东工业大学土木与交通工程学院' },
+            { title: '赞助机构', content: '<strong>钻石支持企业：</strong>深圳大疆创新科技有限公司<br><strong>赞助企业：</strong>北京数字绿土科技股份有限公司、欧思徕(北京)智能科技有限公司、武汉珞珈伊云光电技术有限公司、深圳飞马机器人股份有限公司、深圳市其域创新科技有限公司、瑞合玄武(成都)科技有限公司' },
+            { title: '协办期刊', content: '《国际数字地球学报(英文版)》、《地球大数据(英文版)》、《遥感学报》、《测绘学报》、《遥感技术与应用》、《地球空间信息科学学报(英文版) / Geo-spatial Information Science》' }
+        ];
+
+        const scheduleData = [
+            { time: '10月30日 全天', title: '会议报到 & 全国激光雷达遥感讲课比赛', loc: '酒店望海翼2楼大堂 / 深圳大学校友广场' },
+            { time: '10月31日 08:30-12:10', title: '开幕式 & 大会主旨报告', loc: '酒店望海翼1楼 海上世界厅' },
+            { time: '10月31日 12:30-13:30', title: '午餐', loc: '酒店望海翼、南海翼餐厅' },
+            { time: '10月31日 13:30-18:00', title: '各分论坛报告、数据处理大赛、青年论文报告与快闪', loc: '酒店望海翼/南海翼各分会场' },
+            { time: '11月1日 08:00-12:30', title: '分论坛报告', loc: '酒店望海翼各分会场' },
+            { time: '11月1日 14:00-16:00', title: '闭幕式暨主旨报告与颁奖仪式', loc: '酒店望海翼1楼 海上世界厅' }
+        ];
+
+        const keynotesData = [
+            { 
+                name: '李清泉', 
+                org: '深圳大学', 
+                title: '受限空间无人自主测绘技术、装备及应用', 
+                bio: '中国工程院院士，长期从事精密工程测量与自主测绘理论与技术研究，形成了动态精密工程测量技术体系，突破瞬时变形、表观变形和内部变形测量关键难题；发明研制了激光动态弯沉检测装备、移动道路检测车、隧道检测装备、地铁测量小车等系列高端测量专用装备，显著提升我国基础设施状态测量技术水平。出版专著5部，在Science、测绘学报等期刊发表论文300余篇。获国家技术发明奖二等奖1项，国家科学技术进步奖二等奖2项，国家科技进步创新团队奖1项，国家教学成果二等奖1项，何梁何利科技进步奖，省部级科技进步一等奖7项(第一)，中国青年科技奖，全国十大测绘科技创新人物、全国创新争先奖等。',
+                abstract: '受限空间(如隧道、溶洞、矿井、核电站等)具有卫星信号拒止、环境未知、空间结构复杂、通讯受限、场景特征退化等问题，人工测绘作业效率低、安全风险高、测绘数据质量难以保障，是受限空间认知、勘测和开发利用的关键瓶颈。本报告介绍团队在受限空间无人系统自主测绘方面的最新理论研究与装备研制进展，包括四足机器人具身三维测图技术、无人机自主巡检技术、水下光学精密测量技术等，形成了系列具有自主知识产权的无人自主测绘装备及系统，提升多样化受限空间场景下无人系统自主测绘作业能力。' 
+            },
+            { 
+                name: '史文中', 
+                org: '香港理工大学', 
+                title: '新一代高精度 LiDAR 移动测量技术发展', 
+                bio: '国际欧亚科学院院士，英国社会科学学院院士，香港理工大学地理信息系统及遥感讲座教授、潘乐陶慈善基金智慧城市研究院院长，香港理工大学深圳技术创新研究院(福田)院长，担任国际城市信息学会(International Society for Urban Informatics)主席以及国际期刊《城市信息学》(Urban Informatics)主编。',
+                abstract: '移动测量技术正经历从影像测图向集成影像与LiDAR的三维测量、从依赖GNSS/INS直接获取地理参考向融合SLAM的自主定位建图转变。其核心目标也由三维数据采集，逐步拓展为定位、建图与目标提取的一体化协同。LiDAR显著增强了复杂场景下的三维感知与精细表达能力，同时也带来了多传感器时空基准统一、运动点云配准、GNSS受限于几何退化环境下的误差控制，以及海量点云信息智能提取等关键问题。本讲座将结合团队的相关研究工作，介绍多传感器标定与融合、LiDAR里程计与建图、结构约束与全局优化、点云语义建模等方面的研究进展，阐述如何利用多源观测与场景结构信息提高移动测量系统的定位精度、建图质量和环境理解能力。' 
+            },
+            { 
+                name: 'Long QUAN', 
+                org: '香港科技大学', 
+                title: 'From a deterministic reconstruction to a probabilistic generation of computer vision: does it lead to a unified spatial and physical world representation?', 
+                bio: 'Professor of the Department of Computer Science and Engineering at the Hong Kong University of Science and Technology. Long Quan received the Ph.D. in Computer Science at INRIA (France) in 1989. Before joining the Department of Computer Science at the Hong Kong University of Science and Technology (HKUST) in 2001 to found the HKUST computer vision group, he has been one of the founding members of INRIA Grenoble Computer Vision Group since 1990. He directed the founding best French PhD thesis in computer science, le prix de these Gilles Kahn in 1998, the Piero Zamperoni Best Student Paper Award in 2000, the first of six highlights of Siggraph 2007, the Best Student Poster Paper of CVPR 2008, and the ICPR 2020 Best Student Paper Award. Served as General Chair of ICCV 2011 and IEEE CVPR 2022, IEEE Fellow, founded HKUST start-up Altizure.com (acquired by Apple), and served as Distinguished Scientific Advisor of Apple.',
+                abstract: 'I will first review the development of computer vision in reconstruction and understanding in the past. Then I will discuss the rapid development and the state of the art of the generative approaches in discrete languages, and continuous images and videos, then focus more on discussing the very mathematical nature of language and visual data representation, therefore on the nature of 3D generative representations in different spaces, and on the search of unified representation space in computable architectures for spatial and physical world modeling.' 
+            },
+            { 
+                name: '朱庆', 
+                org: '西南交通大学', 
+                title: '多源数据融合的三维城市模型智能更新', 
+                bio: '西南交通大学学术委员会副主任，国务院学科评议组成员，实景三维中国建设专家组成员，教育部长江学者特聘教授，新世纪百千万人才工程国家级人选，国家测绘地理信息局科技领军人才，首批四川省教书育人名师，四川省高校优秀共产党员，最美铁道科技工作者，智慧城市先锋榜领军人物，四川省智慧城乡大数据应用研究会会长。长期从事地球空间信息学的教学与科研工作，在数字高程模型、三维地理信息系统和数字孪生等方面做了基础性和开拓性工作。',
+                abstract: '三维城市模型是数字中国和智慧社会建设的关键基础信息，主要生命力在于现势性。然而，已有更新方法数据源单一且主要依赖人工，一个城市域的三维城市模型更新速度远远落后于城市更新的实际情况，严重制约城市的精准化管理应用。报告介绍了多源数据融合的单体化三维城市模型智能更新方法，根据倾斜影像和激光扫描点云等多源数据在分辨率、精度和噪声特点等方面的互补特点，创新时序三维数据的非监督自主学习和模型的记忆更新，显著提升城市尺度三维更新建模的自动化程度。' 
+            },
+            { 
+                name: '王力哲', 
+                org: '清华大学深圳国际研究生院', 
+                title: '下一代激光雷达及海岛礁环境遥感探测', 
+                bio: '清华大学深圳国际研究生院长聘教授，国家杰出青年基金获得者、“万人计划”科技创新领军人才、中科院“百人计划”引进国外杰出人才、欧洲科学院(Academia Europaea)院士、国际电气电子工程师协会会士(IEEE Fellow)、国际光学学会会士(SPIE Fellow)。主要研究领域是商业航天卫星技术、遥感信息工程、数字地球。',
+                abstract: '海岛礁环境是生态环境、国防安全、海洋经济的国家重大需求；海岛礁环境是全球变化的敏感指示器，海岛礁环境探测是理解海岛礁环境物质循环的重要前提。本次报告介绍全波形激光雷达、光子计数激光雷达、高光谱激光雷达、混合体制激光雷达等探测原理，及其在海岛礁环境几何要素和物质要素探测的探测技术体系。' 
+            },
+            { 
+                name: '王程', 
+                org: '厦门大学', 
+                title: '激光雷达赋能城市空间智能:从三维感知计算到时空智能演进', 
+                bio: '南强特聘教授，国家“万人计划”入选者，IET会士。空间感知与计算实验室(ASC Lab)带头人，担任福建省城市智能感知与计算重点实验室主任，ISPRS传感器系统分会主席。长期致力于空间智能、传感探测的研究。谷歌引用20000余次，入选斯坦福全球前2%顶尖科学家。曾获省级科技进步一等奖、省级教学成果特等奖、国际摄影测量与遥感学会朱塞佩英吉利奖。',
+                abstract: '从三维感知计算走向空间智能、时空智能是城市智能发展的重要方向，统一时空基准是时空智能的核心基础。本报告阐述该演进路线的核心理念，探讨激光雷达为具身平台建立时空基准、激光雷达与多传感器融合感知、多智能体协同等技术路径；介绍基于激光雷达支撑人机空间融合。报告梳理ASC实验室近年来以激光雷达为核心的三维空间感知与计算相关进展，探索面向城市空间智能的可行技术路径，展望时空智能发展范式。' 
+            },
+            { 
+                name: '刘春', 
+                org: '同济大学', 
+                title: '泛化点云的智能理解与典型场景应用', 
+                bio: '二级教授，同济大学长聘特聘教授，博士生导师，享受国务院政府特殊津贴专家，国家高层次人才计划入选者，国家重点研发计划项目首席科学家，自然资源部科技创新领军人才，上海市优秀学术带头人。同济大学国家卓越工程师学院常务副院长、国际工程师学院常务副院长、研究生院副院长。获国家科技进步二等奖、上海市科技进步一等奖和自然资源科技进步一等奖等10多项科技奖励。授权国家发明专利30余项，软件著作权登记20项，出版中英文合著8部，发表论文300多篇。',
+                abstract: '激光雷达点云是三维空间感知的核心数据载体，当前主流智能解析方法存在场景适配性弱、跨模态点云数据兼容性差、数据高维处理难等问题，难以适配复杂真实工况，限制了激光雷达技术的规模化工程应用.报告聚焦点云基于高维张量空间的智能感知关键技术，针对非受控环境下点云稀疏残缺、噪声干扰、地物形态多变等痛点，融合先验知识与深度学习算法，构建了高鲁棒性的泛化点云智能理解框架。突破异源点云归一化、小样本语义分割、多尺度结构特征提取等核心技术，有效摆脱传统算法对设备参数、采集视角和海量标注数据的依赖。' 
+            },
+            { 
+                name: '钟若飞', 
+                org: '首都师范大学', 
+                title: '从地面到太空:多平台三维信息获取与自主无人系统探索', 
+                bio: '首都师范大学燕京特设讲席教授，资源环境与旅游学院学术委员会主任，博士生导师，北京市科技新星、首都高聚工程科技创新领军人才。担任三维信息获取与应用教育部重点实验室主任，国际数字地球学会中国国家委员会激光雷达专业委员会副主任，中国地理信息产业协会高精地图工委会副主任，国际摄影测量与遥感学会多传感器融合工作组联合主席。曾获自然资源科学技术二等奖、中国测绘学会科技进步一等奖等省部级奖励10余项，发表论文149篇，获授权专利70余项。',
+                abstract: '围绕先进遥感与自主无人系统交叉融合方向，本报告介绍多平台三维环境建模技术从地面向太空延伸的技术实践。团队以相机、激光雷达为核心传感器，依托车载、机载、无人机、卫星多类平台开展三维空间数据获取研究。早期突破无控制移动激光测量关键技术；针对地下室、矿洞等无GNSS封闭复杂环境，攻关自主探索防撞无人机，解决封闭空间自主测绘、实时建图、障碍规避难题。面向太空领域创新在轨智能处理模式，实现卫星在轨变化检测、双线阵动目标识别，提升遥感观测时效；进一步探索200公里级超低轨实景三维卫星。' 
+            },
+            { 
+                name: '姚巍', 
+                org: '中国科学院城市环境研究所', 
+                title: '面向复杂场景的激光视觉感知和混合智能计算', 
+                bio: '长期从事环境空间信息学研究，建立并提出了激光视觉三维感知和智能计算理论与方法体系。研发了弱/稀疏信号目标三维结构重建、多源异质空间信息融合和可解释人工智能驱动的环境空间目标解译等新技术。曾在德国和中国香港国际知名高校及科研机构任教授、博导，高级研究科学家和课题组长。在国内外权威学术杂志和会议发表文章近200篇，获得国际和国家级科研奖励8项。担任6家领域内权威杂志编委或副主编，IEEE高级会员，自2022年起连续入选“全球首2%顶尖科学家”。',
+                abstract: '本报告聚焦复杂场景下激光视觉感知与智能计算的核心理论问题-激光视觉三维成像和混合智能计算理论。面向城市建成环境与自然生态环境中空间结构多样、感知机制复杂及不确定性高度耦合的共性挑战，系统梳理并构建多源三维感知与智能计算的一体化研究框架。报告从感知机理、数据融合、表征模型与推理解译方法等多个关键技术层面，深入分析激光雷达与视觉信息在几何、语义与时序维度上的互补关系，提出融合物理模型驱动与数据驱动的混合智能计算理论体系。' 
+            },
+            { 
+                name: '蓝煜然', 
+                org: '深圳大疆创新科技有限公司', 
+                title: '大疆行业应用机载激光雷达一体化解决方案-以禅思L3为例', 
+                bio: '大疆行业应用解决方案工程师，注册测绘师，长期从事无人机摄影测量和激光雷达泛测绘行业应用方案落地，拥有丰富的一线方案交付、项目实施、与技术培训经验。',
+                abstract: '本报告以大疆禅思L3为核心，介绍面向行业应用的机载激光雷达一体化解决方案，阐述任务规划、外业采集、点云处理及成果输出的全流程作业方法。结合地形测绘、电力巡检、林业调查等典型场景，探讨系统协同、数据质量控制与应用价值，为无人机激光雷达的工程化应用提供参考。' 
+            }
+        ];
+
+        const sessionsData = [
+            { title: '专题1: 点云基础模型与大模型处理①', time: '11月1日 8:30-10:00', loc: '海上世界厅1', conveners: '马凌飞、管海燕、钟若飞', talks: [
+                '8:30-8:45 | 多模态大语言模型的三维城市级生成、感知与理解 - 陈一平 (中山大学)',
+                '8:45-9:00 | 面向城市空间智能的三维目标感知与认知 - 温程璐 (厦门大学)',
+                '9:00-9:15 | 双曲空间下隧道表观病害跨域识别多模态大模型研究 - 张振鑫 (首都师范大学)',
+                '9:15-9:30 | 基于三维点云的开放世界空间智能技术研究 - 夏彦 (中国科学技术大学)',
+                '9:30-9:45 | 多模态大模型的空间几何能力与具身决策可靠性 - 王迪 (西安交通大学)',
+                '9:45-10:00 | 前馈式三维点跟踪与动态点云重建 - 刘缘 (香港科技大学)'
+            ]},
+            { title: '专题2: 点云基础模型与大模型处理②', time: '11月1日 8:30-10:00', loc: '海上世界厅2', conveners: '肖文、陈一平、杨俊涛', talks: [
+                '8:30-8:45 | 面向矢量化重建(Raster2Vector)的统一框架 - 熊彪 (武汉理工大学)',
+                '8:45-9:00 | 从数据增强到无源域自适应:鲁棒三维点云分割 - 郭裕兰 (中山大学)',
+                '9:00-9:15 | 城市时空智能:城市孪生体与城市智能体 - 董震 (武汉大学)',
+                '9:15-9:30 | 地外天体智能三维测图及其在月球“赤道-南极”走廊规划中的应用 - 徐聿升 (同济大学)',
+                '9:30-9:45 | Beyond 3D Reconstruction: Consistent 3D World Representation for Spatial Intelligence - 王冰 (香港理工大学)',
+                '9:45-10:00 | 基于多模态大模型的参数化动态三维模型自动构建方法 - 姜建武 (桂林理工大学)'
+            ]},
+            { title: '专题3: 多模态三维理解与跨域感知①', time: '11月1日 10:40-11:55', loc: '海上世界厅3', conveners: '李镇、张瑞茂', talks: [
+                '10:40-10:55 | 多源多模融合三维场景重建 - 申抒含 (中国科学院自动化研究所)',
+                '10:55-11:10 | 融合图像语义信息的无监督三维目标检测 - 汪汉云 (中山大学)',
+                '11:10-11:25 | 基于生成式视觉先验的三维内容生成和空间理解 - 盛律 (北京航空航天大学)',
+                '11:25-11:40 | 2D生成先验的空间化诱导 - 陈颖聪 (香港科技大学(广州))',
+                '11:40-11:55 | 多模态三维理解及应用 - 李镇 (香港中文大学(深圳))'
+            ]},
+            { title: '专题4: 多模态三维理解与跨域感知②', time: '10月31日 13:30-14:45', loc: '招商堂1', conveners: '刘春、吴杭彬', talks: [
+                '13:30-13:45 | 机载LiDAR在运营铁路地质灾害隐患筛查中的应用研究 - 王飞 (中国铁路设计集团有限公司)',
+                '13:45-14:00 | 无人系统多场景点云感知与巡检技术及应用 - 周敏 (深圳大学)',
+                '14:00-14:15 | 从点云到自主巡检:建筑空间智能感知与具身智能一体化应用实践 - 郭志坚 (中建东方装饰有限公司)',
+                '14:15-14:30 | 轻量化三维感知装备研发与移动机器人集成应用 - 厉彦一 (同济大学)',
+                '14:30-14:45 | 城市部件级实景三维测绘技术研究与应用 - 王令文 (上海勘察设计研究院(集团)股份有限公司)'
+            ]},
+            { title: '专题5: 工程测量、基础设施与韧性城市应用①', time: '10月31日 13:30-14:45', loc: '海上世界厅1', conveners: '朱家松、滕思宇', talks: [
+                '13:30-13:45 | 超高频激光雷达测量技术及地铁巡检应用 - 毛庆洲 (武汉大学)',
+                '13:45-14:00 | 从地球采矿到月球采矿:雷达赋能极端环境工程测量与自主作业 - 陈龙 (中科院自动化所)',
+                '14:00-14:15 | 大型铁路货运枢纽装卸定位场景智能解析与建模 - 周剑 (武汉大学)',
+                '14:15-14:30 | 从LiDAR到BEV融合:露天矿激光雷达测量的技术演进与多模态协同 - 李宇宸 (慕尼黑工业大学)',
+                '14:30-14:45 | 复杂水下环境工程测量:光学视觉检测与多源传感协同应用 - 孟凡一 (香港理工大学)'
+            ]},
+            { title: '专题6: 工程测量、基础设施与韧性城市应用②', time: '11月1日 10:10-12:10', loc: '招商堂1', conveners: '郭波、张振鑫、王丽英', talks: [
+                '10:10-10:25 | 地铁隧道表观精细建模与多病害识别 - 张振鑫 (首都师范大学)',
+                '10:25-10:40 | 融合多源数据利用水深分层XGBoost方法精化浅海海底地形 - 许闯 (广东工业大学)',
+                '10:40-10:55 | 基于多普勒测振信号的地铁隧道衬砌壁后空洞识别方法研究 - 唐超 (中国地质大学(北京))',
+                '10:55-11:10 | 面向重载铁路的高精度三维激光测量技术与应用 - 马浩 (北京四维远见信息技术有限公司)',
+                '11:10-11:25 | 复杂变化场景病害精准识别 - 郭波 (深圳大学)',
+                '11:25-11:40 | 自然场景点云补全 - 邓力维 (中国地质大学(武汉))',
+                '11:40-11:55 | 面向非均匀变形感知的RMLS盾构隧道全局管片错台检测 - 王丽英 (辽宁工程技术大学)',
+                '11:55-12:10 | 基于枝干基元几何与分支拓扑协同学习的LiDAR单木三维建模方法 - 蒲涛 (南京林业大学)'
+            ]},
+            { title: '专题7: 工程测量、基础设施与韧性城市应用③', time: '10月31日 15:40-16:55', loc: '海上世界厅2', conveners: '贺彪、洪武扬', talks: [
+                '15:40-15:55 | 迈向时空智能-深圳市城市四维时空数字底座建设实践 - 刘江涛 (深圳市空间地理信息中心)',
+                '15:55-16:10 | 城市LiDAR点云多尺度语义解析与洪涝制图应用 - 陈焱明 (河海大学)',
+                '16:10-16:25 | 顾及生长约束与结构连续性的地基激光点云单树三维建模研究 - 刘婧 (南京师范大学)',
+                '16:25-16:40 | 面向城市建筑消防安全的智能化感知——建模——评估方法研究 - 杨帆 (南通大学)',
+                '16:40-16:55 | 基于高逼真室内三维场景的应急安全管理新范式演训关键技术 - 原志路 (深圳大学)'
+            ]},
+            { title: '专题8: 光谱激光雷达与多源融合感知①', time: '10月31日 15:10-17:00', loc: '海上世界厅3', conveners: '梅亮、白杰、王力、李世华', talks: [
+                '15:10-15:27 | 多模态光谱成像技术及植物表型应用 - 梅亮 (大连理工大学)',
+                '15:27-15:40 | 基于沙氏原理的多光谱/荧光激光雷达构建及其在枝叶分离中的应用 - 林宏泽 (杭州电子科技大学)',
+                '15:40-15:53 | 宽量程海洋蓝绿激光测深:从超浅水到百米深度 - 周雨迪 (浙江大学)',
+                '15:53-16:06 | 基于多模态遥感数据的全球土地变化监测 - 杜贞容 (大连理工大学)',
+                '16:06-16:19 | 面向开放动态场景的多源高光谱协同感知与跨模态智能解译 - 宋启亚 (湖南师范大学)',
+                '16:19-16:32 | 基于GF-5高光谱与星载LiDAR的森林地上生物量反演 - 王一博 (广州大学)',
+                '16:32-16:45 | 融合高光谱与激光雷达森林地上生物量反演:光谱表示与融合方式分析 - 徐争 (中国地质大学(武汉))',
+                '16:45-17:00 | 高光谱激光雷达遥感现状与前沿 - 白杰 (电子科技大学)'
+            ]},
+            { title: '专题9: 光谱激光雷达与多源融合感知②', time: '10月31日 13:30-15:30', loc: '海上世界厅2', conveners: '史硕、李贤、杨健、杜霖', talks: [
+                '13:30-13:45 | 全天时高光谱激光雷达光学接收技术 - 吴德成 (中国科学院合肥物质科学研究院)',
+                '13:45-14:00 | 主被动航空多源遥感系统技术与应用 - 李伟 (北京航空航天大学)',
+                '14:00-14:15 | 高光谱激光雷达反射率光谱重建 - 邵慧 (安徽建筑大学)',
+                '14:15-14:30 | 机载多光谱与激光雷达空谱合一处理技术 - 李贤 (哈尔滨工业大学)',
+                '14:30-14:45 | 主被动数据融合与遥感应用 - 杨健 (中国地质大学(武汉))',
+                '14:45-15:00 | 激光诱导荧光雷达植被三维生化参数反演方法 - 汤兴涛 (武汉大学)',
+                '15:00-15:15 | 激光雷达多通道信号处理及成像 - 厚霞霞 (中国科学院精密测量科学与技术创新研究院)',
+                '15:15-15:30 | 高光谱激光雷达空谱一体化点云语义分割应用 - 罗宾汉 (武汉大学)'
+            ]},
+            { title: '专题10: 光谱激光雷达与多源融合感知③', time: '10月31日 13:30-15:00', loc: '海上世界厅3', conveners: '马威、陈茂霖、满其霞、刘海建', talks: [
+                '13:30-13:45 | 珞珈探索者无人自主洞穴探索测量 - 陈驰 (武汉大学)',
+                '13:45-14:00 | 跨模态表征驱动的复杂场景解译与视觉定位 - 代恒铭/马威 (云南师范大学/重庆交通大学)',
+                '14:00-14:15 | 点云质量退化表征:从可解释诊断到鲁棒感知 - 王迪 (西安交通大学)',
+                '14:15-14:30 | TreeMask:机载激光扫描点云单木分割的扇区掩膜表征 - 沈月千 (河海大学)',
+                '14:30-14:45 | 城市复杂场景激光雷达位置识别定位方法 - 张正华 (中国矿业大学)',
+                '14:45-15:00 | 高压输电线路的多源感知与三维构建 - 陈茂霖 (重庆交通大学)'
+            ]},
+            { title: '专题11: 激光雷达三维建模与数字孪生①', time: '11月1日 8:00-10:00', loc: '招商堂4', conveners: '王永志、陶武勇、臧玉府', talks: [
+                '8:00-8:15 | 多源观测数据下的精细化城市建模与语义理解 - 赵吴凡 (香港科技大学(广州))',
+                '8:15-8:30 | 基于兼容性矩阵的点云配准技术 - 陶武勇 (南昌大学)',
+                '8:30-8:45 | 多结构约束驱动的点云特征提取与三维重建方法研究 - 赵不钒 (武汉理工大学)',
+                '8:45-9:00 | 融合多平台激光点云的矿山巷道整体形变分析方法 - 孙文潇 (山东建筑大学)',
+                '9:00-9:15 | 大规模点云超体素及弱监督语义分割 - 李渭 (南昌大学)',
+                '9:15-9:30 | 三维激光扫描技术在建筑BIM上的应用案例 - 张欣 (上海亿钶鑫信息科技有限公司)',
+                '9:30-9:45 | 融合三维点云和物联网数据的实景三维实体化建模 - 李彦 (中国地质大学(北京))',
+                '9:45-10:00 | 无人机实时二三维制图研究 - 周妍 (广东工业大学)'
+            ]},
+            { title: '专题12: 激光雷达三维建模与数字孪生②', time: '11月1日 8:15-10:30', loc: '海上世界厅3', conveners: '汤圣君、陈驰、赵吴凡、李彦、康志忠', talks: [
+                '8:15-8:30 | 多平台多传感器通用智能三维重建方法与应用 - 季顺平 (武汉大学)',
+                '8:30-8:45 | 空地联合立体空间智能构建研究 - 郑先伟 (武汉大学)',
+                '8:45-9:00 | 实景三维变化检测与模型更新方法研究 - 肖文 (中国地质大学(武汉))',
+                '9:00-9:15 | 多期点云的变化检测与长期地图构建方法 - 吴杭彬 (同济大学)',
+                '9:15-9:30 | 拓扑几何图优化低空摄影测量探索与实践 - 许志华 (中国矿业大学(北京))',
+                '9:30-9:45 | 地理空间完备性智能表达 - 张振鑫 (首都师范大学)',
+                '9:45-10:00 | 通往物理AI之路——全空间无人体系 - 张明 (广州市城市规划勘测设计研究院有限公司)',
+                '10:00-10:10 | 空-地跨视角摄影测量及应用 - 姜三 (深圳大学)',
+                '10:10-10:20 | 面向空间智能的三维世界构建:连接实景重建与视频生成 - 刘缘 (香港科技大学)',
+                '10:20-10:30 | Beyond 3D Reconstruction: Consistent 3D World Representation for Spatial Intelligence - 王冰 (香港理工大学)'
+            ]},
+            { title: '专题13: 激光雷达三维建模与数字孪生③', time: '11月1日 10:10-11:55', loc: '海上世界厅2', conveners: '杨超、王跃嵩、郑晋图', talks: [
+                '10:10-10:25 | 面向城市场景的空天地一体化协同3D高斯建模 - 杨超 (中国地质大学(武汉))',
+                '10:25-10:40 | 从场景重建走向空间智能:语义-视觉一体化3D高斯建模、可控生成式补全与智能体应用 - 王跃嵩 (华中科技大学)',
+                '10:40-10:55 | 面向高保真实景三维重建的自适应几何与高斯表示技术路线 - 曾兆杰 (华中科技大学)',
+                '10:55-11:10 | 卫星线阵影像3DGS重建 - 郑茂腾 (中南大学)',
+                '11:10-11:25 | 基于激光雷达的3D现实捕获与空间孪生 - 李自明 (NavVis)',
+                '11:25-11:40 | 一种图像与场景结构层面粗细粒度结合的纯视觉实景建模方法研究 - 贝为佳 (佛山大学)',
+                '11:40-11:55 | 迈向个性化和场景级三维生成 - 刘政哲 (香港岭南大学)'
+            ]},
+            { title: '专题14: 激光雷达三维建模与数字孪生④ 粤港澳大湾区数字孪生应用实践', time: '10月31日 14:55-16:55', loc: '海上世界厅1', conveners: '王伟玺、薛帆、颜王吉、李茂粟', talks: [
+                '14:55-15:10 | 全球世界文化遗产地地面沉降监测与驱动因素分析 - 齐志新 (中山大学)',
+                '15:10-15:25 | 知识驱动的城市数字孪生 人工智能背景下从空间底座到决策底座的升级路径 - 黄铎 (华南理工大学)',
+                '15:25-15:40 | 三维点云自动化建模:范式、进展与前景 - 薛帆 (香港大学)',
+                '15:40-15:55 | 从感知到预见:基于物联网的桥梁数字孪生模型动态更新与安全评估 - 颜王吉 (澳门大学)',
+                '15:55-16:10 | 融合精细化降雨预报的街道级城市内涝预报与智能预警分析 - 胡明远 (星睿云智科技有限公司)',
+                '16:10-16:25 | 贝叶斯概率框架下的智慧数字孪生 - 郭善知 (澳门大学)',
+                '16:25-16:40 | 空天融合的城市精细模型三维重建与生成 - 王伟玺 (深圳大学)',
+                '16:40-16:55 | 新视角感知赋能城市数字孪生:窗景智能评估、分析与应用 - 李茂粟 (香港科技大学(广州))'
+            ]},
+            { title: '专题15: 具身智能与自主测绘①', time: '10月31日 14:55-17:25', loc: '招商堂4', conveners: '陈驰、李由、谢洪、陈彭鑫', talks: [
+                '14:55-15:10 | 遮蔽退化场景磁-惯阵列里程计设计与应用 - 余跃 (香港理工大学)',
+                '15:10-15:25 | 地外天体三维环境智能感知与巡视探测 - 黄荣 (同济大学)',
+                '15:25-15:40 | 复杂地形环境四足机器人具身三维测图方法及系统研制 - 张星 (深圳大学)',
+                '15:40-15:55 | 地下开采环境自主定位、图探索与动态建井下勘测实践 - 许志华 (中国矿业大学(北京))',
+                '15:55-16:10 | 激光雷达环境感知下高精度GNSS定位可行区预判与自主导航控制 - 朱锋 (武汉大学)',
+                '16:10-16:25 | 融合强度特征与黎曼流形地面约束的煤矿井下稳健激光SLAM方法 - 蔺小虎 (西安科技大学)',
+                '16:25-16:40 | 移动测量技术建立数字孪生城市 - 陈彭鑫 (华东师范大学)',
+                '16:40-16:55 | 复杂受限空间移动机器人自主状态估计 - 吴宜斌 (新加坡南洋理工大学)',
+                '16:55-17:10 | 非暴露空间无人机自主建图与应用 - 孙上哲 (武汉大学)',
+                '17:10-17:25 | 电力场景下空间智能机器人开发和应用 - 余博斌 (北京数字绿土科技股份有限公司)'
+            ]},
+            { title: '专题16: 具身智能与自主测绘②', time: '10月31日 15:25-17:55', loc: '招商堂3', conveners: '王健、许志华、蔺小虎、陈首彬', talks: [
+                '15:25-15:40 | 地下受限空间自主导航与任务智能 - 李由 (武汉大学)',
+                '15:40-15:55 | 多平台协同SLAM赋能矿山智能感知与监测关键技术及应用 - 蔺小虎 (西安科技大学)',
+                '15:55-16:10 | 复杂地下空间自主定位建图与三维场景理解关键技术研究 - 张秋照 (中国矿业大学)',
+                '16:10-16:25 | 复杂矿山场景激光雷达感知定位一体化方法与实践 - 张正华 (中国矿业大学)',
+                '16:25-16:40 | 隧道LiDar融合定位的鲁棒性提升与完好性分析 - 李泽宇 (山东科技大学)',
+                '16:40-16:55 | 多平台SLAM技术井下复杂空腔探测在“一二步”资源回采爆破设计应用研究 - 王瑞 (江西理工大学/赣南科技学院)',
+                '16:55-17:10 | 井工矿区多时相LiDAR地表形变时序联合识别与空间连接 - 袁德宝 (中国矿业大学(北京))',
+                '17:10-17:25 | 复杂空间具身智能机器人自主探测巡检关键技术及开放平台 - 陈首彬 (人工智能与数字经济广东省实验室(深圳))',
+                '17:25-17:40 | 面向复杂地下空间探测的多平台激光点云自适应融合方法 - 李志远 (山东工商学院)',
+                '17:40-17:55 | 受限空间无人自主测量与巡检 - 陈曦 (深圳大学)'
+            ]},
+            { title: '专题17: 三维点云编码与高效传输', time: '11月1日 8:30-10:00', loc: '招商堂3', conveners: '高伟、李革', talks: [
+                '8:30-8:45 | 多尺度激光雷达森林生物量估算研究 - 黄华兵 (中山大学)',
+                '8:45-9:00 | 物理引导的光场成像关键技术研究 - 金欣 (清华大学深圳国际研究生院)',
+                '9:00-9:15 | 紧凑3DGS表示的研究进展 - 王诗淇 (香港城市大学)',
+                '9:15-9:30 | 点云几何信息的统一编码理论与关键技术研究 - 李礼 (中国科学技术大学)',
+                '9:30-9:45 | 时空关联驱动的动态点云深度压缩 - 郭裕兰 (中山大学)',
+                '9:45-10:00 | 点云智能编码进展及标准制定 - 高伟 (北京大学深圳研究生院)'
+            ]},
+            { title: '专题18: 三维感知、交互与场景理解①', time: '10月31日 13:30-15:30', loc: '招商堂2', conveners: '陈一平、罗智鹏、杨红鑫', talks: [
+                '13:30-13:45 | 基于图结构建模与关系推理的三维场景图预测 - 郭裕兰 (中山大学)',
+                '13:45-14:00 | 复杂退化条件下融合多模态数据的车载激光点云语义分割 - 汪汉云 (中山大学)',
+                '14:00-14:15 | Physics-Principled 3D World Models for Embodied Perception and Interaction - 杨波 (香港理工大学)',
+                '14:15-14:30 | 人类标注过程引导的大规模城市Mesh模型缺陷检测与质量评估方法 - 汤圣君 (深圳大学)',
+                '14:30-14:45 | 多场景LiDAR点云上下文协同语义分割方法研究 - 陈焱明 (河海大学)',
+                '14:45-15:00 | 激光雷达点云驱动的轨道交通结构服役状态智能感知 - 崔晔 (郑州大学)',
+                '15:00-15:15 | 稀疏视角下的三维高斯场景重建与风格迁移 - 昊张 (中山大学)',
+                '15:15-15:30 | 几何能替代多少标签? 稀疏标注点云变化检测的三个实验 - 尹超 (香港科技大学)'
+            ]},
+            { title: '专题19: 三维感知、交互与场景理解②', time: '11月1日 10:50-12:05', loc: '招商堂2', conveners: '郭裕兰、符志恒、许可', talks: [
+                '10:50-11:05 | 先进三维视觉感知 - 刘贤明 (哈尔滨工业大学)',
+                '11:05-11:20 | 智能场景重建:构建数字孪生的基石 - 郭延文 (南京大学)',
+                '11:20-11:35 | 基于预测树结构的激光雷达点云高效压缩编码方法 - 元辉 (山东大学)',
+                '11:35-11:50 | Advancing Spatial Intelligence / from the Representation Learning of 3D Data - 侯军辉 (香港城市大学)',
+                '11:50-12:05 | Scalable Spatial Intelligence: Understanding and Rendering 3D World Without Supervision - 杨波 (香港理工大学)'
+            ]},
+            { title: '专题20: 三维感知、交互与场景理解③', time: '10月31日 13:30-15:15', loc: '招商堂3', conveners: '温程璐、董震', talks: [
+                '13:30-13:45 | 跨越点云与高斯:可泛化的三维表面重建技术 - 杨波 (香港理工大学)',
+                '13:45-14:00 | 多模态协同的城市三维点云分割 - 马凌飞 (华东师范大学)',
+                '14:00-14:15 | 面向三维空间的感知、推理与决策 - 王海平 (香港科技大学)',
+                '14:15-14:30 | 城域场景下的激光雷达重定位 - 敖晟 (厦门大学)',
+                '14:30-14:45 | 复杂动态环境下基于激光雷达的移动机器人自主导航 - 吴花洁 (狮子山人工智能实验室)',
+                '14:45-15:00 | 标签高效多智能体协同目标感知 - 夏启明 (香港理工大学)',
+                '15:00-15:15 | Towards Open-World 3D Scene Understanding: Robustness, Cross-modality, and Scene-generalization - 朱润松 (香港中文大学)'
+            ]},
+            { title: '专题21: 森林激光雷达处理与解译①', time: '11月1日 10:10-11:55', loc: '招商堂3', conveners: '蔡尚书、胡容海', talks: [
+                '10:10-10:25 | 融合无人机激光雷达和高光谱的植被方向反射率重建 - 郑光 (南京大学)',
+                '10:25-10:40 | 面向精细林业调查的激光SLAM与单木属性在线估计 - 王晓晨 (空天信息大学(筹))',
+                '10:40-10:55 | 激光雷达生物量指数的应用 - 王强 (黑龙江工程学院)',
+                '10:55-11:10 | 协同ICESat-2与GEDI的森林林下地形估测 - 黄佳鹏 (辽宁工程技术大学)',
+                '11:10-11:25 | 车载激光点云中行道树的感知、建模与应用 - 李金涛 (山东理工大学)',
+                '11:25-11:40 | 基于多站地基激光雷达的树木叶面积体密度反演 - 胡容海 (中国科学院大学)',
+                '11:40-11:55 | 林下激光雷达森林样地调查 - 蔡尚书 (中国林业科学研究院资源信息研究所)'
+            ]},
+            { title: '专题22: 森林激光雷达处理与解译②', time: '11月1日 10:10-11:55', loc: '海上世界厅1', conveners: '惠振阳、刘金成、朱宁宁', talks: [
+                '10:10-10:25 | 基于多区域无人机Lidar数据的亚热带森林生物量估测 - 陆灯盛 (福建师范大学)',
+                '10:25-10:40 | 星载与无人机激光雷达林业研究进展 - 张吴明 (中山大学)',
+                '10:40-10:55 | 河岸森林溪流太阳辐射的三维高时空分辨率动态:机载激光雷达的视角 - 郑光 (南京大学)',
+                '10:55-11:10 | 林木叶面积垂直分布激光雷达遥感反演 - 李世华 (电子科技大学)',
+                '11:10-11:25 | 基于句芒号的森林地上生物量估算 - 邢艳秋 (东北林业大学)',
+                '11:25-11:40 | 观测+模拟驱动的生态样地三维数字孪生 - 漆建波 (北京师范大学)',
+                '11:40-11:55 | 融合生态先验与深度学习的点云单木分割 - 陈茂霖 (重庆交通大学)'
+            ]},
+            { title: '专题23: 激光雷达生态应用①', time: '11月1日 8:00-10:36', loc: '招商堂2', conveners: '刘婧、聂胜、梁欣廉、黄华国', talks: [
+                '8:00-8:15 | 基于GEDI-SAWA的国别尺度森林地上生物量估算(特邀) - 倪文俭 (中国科学院空天信息创新研究院)',
+                '8:15-8:30 | Scale-dependent bias in lidar canopy height measurement(特邀) - 唐昊 (新加坡国立大学)',
+                '8:30-8:45 | 高光谱激光雷达植被结构-功能一体化探测技术 - 史硕 (武汉大学)',
+                '8:45-9:00 | 星载激光雷达森林精细三维结构反演 - 聂胜 (中国科学院空天信息创新研究院)',
+                '9:00-9:12 | 多平台LiDAR海岸带植被结构及性状功能参数反演 - 谭凯 (宁波大学)',
+                '9:12-9:24 | 复杂森林场景下智能测站规划 - 惠振阳 (东华理工大学)',
+                '9:24-9:36 | 国产干涉SAR卫星与星载激光雷达协同的森林三维结构遥感(特邀) - 雷洋 (中国科学院国家空间科学中心)',
+                '9:36-9:48 | FoScenes:一个基于公开的机载激光雷达数据生成的高保真、大规模三维森林场景集(特邀) - 殷天罡 (香港理工大学)',
+                '9:48-10:00 | 激光雷达与光谱影像协同的林业全周期遥感应用 - 李林源 (北京林业大学)',
+                '10:00-10:12 | 星载激光雷达植被结构参数约束下的30米分辨率森林碳汇模拟 - 商荣 (福建师范大学)',
+                '10:12-10:24 | 无人机机载激光测深关键技术及应用进展 - 俞家勇 (安徽建筑大学)',
+                '10:24-10:36 | 基于分形理论的地基激光雷达点云叶面积指数估算 - 赖永康 (北京师范大学)'
+            ]},
+            { title: '专题24: 激光雷达生态应用②', time: '10月31日 15:40-17:25', loc: '招商堂2', conveners: '赵旦、孙华、杜黎明、孙颖、张王菲', talks: [
+                '15:40-15:55 | 激光雷达遥感可溯源计量森林碳汇 - 庞勇 (中国林业科学研究院资源信息研究所)',
+                '15:55-16:10 | 激光雷达驱动的森林资源清查新体系 - 赵旦 (中国科学院空天信息创新研究院)',
+                '16:10-16:25 | 地空激光雷达点云融合方法研究 - 孙华 (中南林业科技大学)',
+                '16:25-16:40 | 从遥感观测到森林治理:基于AI智能体的转化框架 - 孙颖 (中山大学)',
+                '16:40-16:55 | 面向碳交易的森林碳计量方法 - 朱宁宁 (成都理工大学)',
+                '16:55-17:10 | 复杂地形区地表灾害激光雷达遥感监测方法研究 - 李朋飞 (西安科技大学)',
+                '17:10-17:25 | 红树林冠层结构对台风抵抗力及灾后恢复的影响 - 黄国然 (海南大学)'
+            ]},
+            { title: '专题25: 世界模型与生成式三维智能', time: '11月1日 8:30-10:00', loc: '招商堂1', conveners: '申抒含', talks: [
+                '8:30-8:45 | 高斯泼溅:从三维重建到世界建模 - 刘玉身 (清华大学)',
+                '8:45-9:00 | 低空测绘下的精细化实景三维建设 - 葛旭明 (西南交通大学)',
+                '9:00-9:15 | 面向空间智能的三维场景生成 - 郭裕兰 (中山大学)',
+                '9:15-9:30 | 世界模型驱动的自动驾驶和空间智能 - 李镇 (香港中文大学(深圳))',
+                '9:30-9:45 | 城市场景结构化重建与生成 - 高翔 (中国科学院自动化研究所)',
+                '9:45-10:00 | 复杂室内环境多视图三维语义结构化建模 - 董明玥 (武汉大学)'
+            ]},
+            { title: '专题26: 卫星激光测高与空间遥感', time: '11月1日 10:10-11:40', loc: '招商堂4', conveners: '谢俊峰、王春辉、付安民', talks: [
+                '10:10-10:25 | 星载对地观测激光测量载荷技术发展与展望 - 王春辉 (北京空间机电研究所)',
+                '10:25-10:40 | 自然资源陆地卫星内蒙古苏尼特右旗激光检校场建设与应用 - 谢俊峰 (自然资源部国土卫星遥感应用中心)',
+                '10:40-10:55 | 国家尺度多模态激光雷达数据集建设及其应用示范 - 付安民 (国家林业和草原局林草调查规划院)',
+                '10:55-11:10 | 卫星激光测高数据与遥感影像主被动融合研究与应用 - 帅邢 (中国人民解放军战略支援部队信息工程大学)',
+                '11:10-11:25 | 基于星载光子计数激光雷达的山地森林地上生物量反演 - 周辉 (武汉大学)',
+                '11:25-11:40 | 基于星载激光雷达和立体摄影测量的森林高度估测研究 - 刘清旺 (中国林业科学研究院资源信息研究所)'
+            ]}
+        ];
+
+        const specialEventsData = [
+            { title: '点云数据处理大赛(一)', time: '10月31日 14:00-17:35', loc: '南海翼LF层南海堂1', conveners: '大赛组委会', talks: [
+                '14:00-14:05 | 赛道二/huangzixuan (报告人: 孙雪航) - 武汉大学测绘遥感信息工程全国重点实验室',
+                '14:05-14:10 | 赛道二/whuai (报告人: 张佳宝) - 武汉大学',
+                '14:10-14:15 | 赛道二/tkrainnow (报告人: 刘旻喆) - 武汉大学',
+                '14:15-14:20 | 赛道二/gengxiaohui (报告人: 耿晓惠) - 北京信息科技大学',
+                '14:20-14:25 | 赛道二/zhenniu06 (报告人: 牛子祯) - 中国矿业大学(北京)',
+                '14:25-14:30 | 赛道二/wcf555 (报告人: 吴明桦) - 重庆交通大学',
+                '14:30-14:35 | 赛道二/shouzy (报告人: 曾勇) - 上海海洋大学',
+                '14:35-14:40 | 赛道二/tongjihhp (报告人: 胡浩鹏) - 同济大学',
+                '14:40-14:45 | 赛道二/yanms (报告人: 鄢茂胜) - 光明实验室 & 深圳大学',
+                '14:45-14:50 | 赛道二/mzcn1 (报告人: 马紫晨) - 首都师范大学',
+                '14:50-14:55 | 赛道二/shikangzhou (报告人: 周仕康) - 云南大学',
+                '14:55-15:00 | 赛道二/ljq666 (报告人: 李敬琦) - 山东建筑大学',
+                '15:00-15:05 | 赛道二/qu_yh (报告人: 曲云昊) - 网络空间部队信息工程大学',
+                '15:05-15:10 | 赛道三/hongye02 (报告人: 侯鸿业) - 香港科技大学(广州)',
+                '15:10-15:15 | 赛道三/Louis77777 (报告人: 林立恒) - AI4CITY Lab',
+                '15:15-15:20 | 赛道三/yyyu-1010 (报告人: 于金正) - 深圳大学',
+                '15:20-15:25 | 赛道三/wind-kl (报告人: 张关美) - 重庆大学',
+                '15:25-15:30 | 赛道三/YangLuoSYS_U (报告人: 罗阳) - 中山大学/中山大学南昌研究院',
+                '15:30-15:35 | 赛道三/xuebonan (报告人: 薛博楠) - 首都师范大学',
+                '15:35-15:40 | 赛道三/Miaoaaaa (报告人: 林俊彪) - 广州大学',
+                '15:40-15:45 | 赛道三/zzk77 (报告人: 张子康) - 中国科学院大学',
+                '15:45-15:50 | 赛道三/Judy (报告人: 黄鸿盛) - 香港理工大学、深圳大学',
+                '15:50-15:55 | 赛道三/MATTLAB (报告人: 沈灏源) - 深圳大学',
+                '16:10-16:15 | 赛道二/huangzixuan (报告人: 孙雪航) - 武汉大学测绘遥感信息工程全国重点实验室',
+                '16:15-16:20 | 赛道二/whuai (报告人: 张佳宝) - 武汉大学',
+                '16:20-16:25 | 赛道二/tkrainnow (报告人: 刘旻喆) - 武汉大学',
+                '16:30-16:35 | 赛道二/gengxiaohui (报告人: 耿晓惠) - 北京信息科技大学',
+                '16:35-16:40 | 赛道二/wcf555 (报告人: 吴明桦) - 重庆交通大学',
+                '16:40-16:45 | 赛道二/roche666 (报告人: 王城富) - 中国矿业大学',
+                '16:45-16:50 | 赛道二/Doraemon (报告人: 王童) - 中国矿业大学(北京)',
+                '16:50-16:55 | 赛道二/lidar2026_na (报告人: 任京智) - 中国地质大学(北京)',
+                '16:55-17:00 | 赛道二/yanms (报告人: 鄢茂胜) - 光明实验室 & 深圳大学',
+                '17:00-17:05 | 赛道二/liaoyinhe2004 (报告人: 彭伊梵) - 桂林理工大学',
+                '17:05-17:10 | 赛道二/zhaocb (报告人: 赵橙彬) - 重庆邮电大学',
+                '17:10-17:15 | 赛道二/mzcn1 (报告人: 马紫晨) - 首都师范大学',
+                '17:15-17:20 | 赛道二/jinge0517 (报告人: 金戈) - 中山大学',
+                '17:20-17:25 | 赛道二/cheny (报告人: 陈杨) - 中山大学',
+                '17:25-17:30 | 赛道二/ljq666 (报告人: 李敬琦) - 山东建筑大学',
+                '17:30-17:35 | 赛道二/liujin (报告人: 刘劲) - 首都师范大学'
+            ]},
+            { title: '点云数据处理大赛(二)', time: '10月31日 14:00-18:00', loc: '南海翼LF层南海堂2', conveners: '大赛组委会', talks: [
+                '14:00-14:05 | 赛道五/errorchtholly (报告人: 周泽同) - 南京师范大学',
+                '14:05-14:10 | 赛道五/menglingke (报告人: 孟令珂) - 山东科技大学',
+                '14:10-14:15 | 赛道五/superp (报告人: 孙鹏) - 首都师范大学',
+                '14:15-14:20 | 赛道五/gyyyyy (报告人: 胡桐源) - 南京师范大学',
+                '14:20-14:25 | 赛道五/changxiaocha (报告人: 常笑超) - 北京市园林绿化科学研究院',
+                '14:25-14:30 | 赛道五/raykk (报告人: 付春天) - 首都师范大学',
+                '14:30-14:35 | 赛道五/zyfguxi (报告人: 张雨菲) - 南京师范大学',
+                '14:35-14:40 | 赛道五/weixin (报告人: 魏鑫) - 福州大学',
+                '14:40-14:45 | 赛道五/lizeli (报告人: 李泽立) - 自然资源部国土遥感卫星应用中心',
+                '14:45-14:50 | 赛道五/mjc-0312 (报告人: 马竟超) - 首都师范大学',
+                '14:50-14:55 | 赛道六/Luhao03 (报告人: 张露颢) - 南京师范大学',
+                '14:55-15:00 | 赛道六/ouk_1991 (报告人: 柯文瀚) - 深圳大学',
+                '15:00-15:05 | 赛道六/hongbin1 (报告人: 方鸿斌) - 南京师范大学',
+                '15:05-15:10 | 赛道六/feng206 (报告人: 苏文涛) - 桂林理工大学',
+                '15:10-15:15 | 赛道六/3DSAIL (报告人: 王端初) - 西安交通大学',
+                '15:15-15:20 | 赛道六/point_ai (报告人: 张浩然) - 中国科学院空天信息创新研究院',
+                '15:20-15:25 | 赛道六/3DSMART (报告人: 王旭哲) - 中国地质大学(武汉)',
+                '15:25-15:30 | 赛道六/zhxt0217 (报告人: 张鑫泰) - 北京建筑大学',
+                '15:30-15:35 | 赛道七/wuwumm (报告人: 付春天) - 首都师范大学',
+                '15:35-15:40 | 赛道七/aiglory (报告人: 李沛泽) - 广西大学',
+                '15:40-15:45 | 赛道七/wwwwqc (报告人: 魏启超) - 中国地质大学(武汉)',
+                '15:45-15:50 | 赛道七/liangyanci (报告人: 梁晏慈) - 福州大学',
+                '15:50-15:55 | 赛道七/zhucc (报告人: 祝春灿) - 华东师范大学空间人工智能学院',
+                '15:55-16:00 | 赛道七/gongjingchao (报告人: 龚靖超) - 北京理工大学',
+                '16:10-16:15 | 赛道一/xumengbing (报告人: 许梦兵) - 中国测绘科学研究院、中国地震局地震预测研究所、首都师范大学',
+                '16:15-16:20 | 赛道一/yc12a (报告人: 杨亚晨) - 河南理工大学',
+                '16:20-16:25 | 赛道一/yin-052 (报告人: 张丁尹) - 中国矿业大学',
+                '16:25-16:30 | 赛道一/kailvn (报告人: 覃卫文) - 首都师范大学',
+                '16:30-16:35 | 赛道一/hjd-sdust (报告人: 郝劲达) - 山东科技大学',
+                '16:35-16:40 | 赛道一/Woshicaiji (报告人: 李刚) - 哈尔滨工业大学',
+                '16:40-16:45 | 赛道一/慧林智合队 (报告人: 白宏坤) - 东北林业大学',
+                '16:45-16:50 | 赛道一/zl-edu (报告人: 张文博) - 东华理工大学',
+                '16:50-16:55 | 赛道一/Zhanzichen (报告人: 詹梓晨) - 北京理工大学',
+                '16:55-17:00 | 赛道一/CMHH (报告人: 李芳) - 东北林业大学',
+                '17:00-17:05 | 赛道一/ZNL666 (报告人: 陈明) - 中南林业科技大学',
+                '17:05-17:10 | 赛道一/shallwei (报告人: 徐浩维) - 国网河北省电力有限公司石家庄供电分公司',
+                '17:10-17:15 | 赛道四/lizzzzzz (报告人: 付春天) - 首都师范大学',
+                '17:15-17:20 | 赛道四/hemingshuaizha (报告人: 何铭涛) - 福州大学',
+                '17:20-17:25 | 赛道四/tian (报告人: 柯文瀚) - 深圳大学',
+                '17:25-17:30 | 赛道四/ouk_1991 (报告人: 方鸿斌) - 南京师范大学',
+                '17:30-17:35 | 赛道四/hongbin1 (报告人: 苏文涛) - 桂林理工大学',
+                '17:35-17:40 | 赛道四/feng206 (报告人: 王端初) - 西安交通大学',
+                '17:40-17:45 | 赛道四/3DSAIL (报告人: 张浩然) - 中国科学院空天信息创新研究院',
+                '17:45-17:50 | 赛道四/point_ai (报告人: 王旭哲) - 中国地质大学(武汉)'
+            ]},
+            { title: '优秀青年论文报告/快闪报告(一)', time: '10月31日 13:30-17:30', loc: '望海翼2楼招商堂4', conveners: '主持人: 汤圣君', talks: [
+                '13:30-13:37 | 面向复杂空间异构多无人系统的端-边-云协同平台设计与实现 - 董诗琪 (首都师范大学)',
+                '13:37-13:44 | 基于视觉语言模型的文本-激光雷达地点识别 - 廖有祺 (武汉大学)',
+                '13:44-13:51 | 空间几何感知的室内残缺点云实例网格重建方法 - 武海洋 (山东科技大学)',
+                '13:51-13:58 | 退化场景下基于自适应视觉约束的激光惯性里程计 - 闫涛 (武汉大学)',
+                '13:58-14:05 | 基于几何感知的大规模机载点云建筑轮廓精细提取 - 王奎豪 (深圳大学)',
+                '14:05-14:12 | 机载激光雷达输电走廊点云跨电压语义分割的无监督领域自适应 - 阮成之 (中国科学院空天信息创新研究院)',
+                '14:12-14:19 | 球面几何适配的全景深度估计与可见表面点云生成 - 刘一航 (深圳大学)',
+                '14:19-14:26 | CMGRNet:面向车载LiDAR点云语义分割的跨模态类别感知与几何校正方法 - 王哲浩 (北京建筑大学)',
+                '14:26-14:33 | 基于低强度历史体素的激光雷达灰尘点云滤波方法 - 胡云鹏 (首都师范大学)',
+                '14:33-14:40 | 面向城市道路基础设施检测的开放词汇模型领域适配与跨城市泛化 - 付卢萱 (武汉大学)',
+                '14:40-14:47 | 融合双坐标几何编码与类别间隔正则化的车载MLS点云语义分割方法 - 李思雨 (河南理工大学)',
+                '14:47-14:54 | 基于多尺度泊松偏差与L1趋势滤波的海底光子自适应提取方法 - 秦兴瑶 (东华理工大学)',
+                '15:06-15:13 | 基于球面几何细化与射线可靠性门控的全景度量深度估计 - 林宏焕 (深圳大学)',
+                '15:13-15:20 | 耦合PROSAIL与LESS辐射传输模型的森林叶面积指数反演 - 任泽翔 (河南理工大学)',
+                '15:20-15:27 | 面向独立推理的跨类别点云异常定位多层次知识蒸馏方法 - 孙鹏 (首都师范大学)',
+                '15:27-15:34 | 面向长期定位的激光雷达栅格地图更新方法 - 吴超红 (武汉大学)',
+                '15:34-15:41 | 基于排序学习的GEDI亚光斑尺度森林高度反演研究 - 赵华晨 (中国科学院空天信息创新研究院)',
+                '15:41-15:48 | 固定预算下多场景三维重建的连通覆盖视角选择方法 - 赵昆明 (南京林业大学信息)',
+                '15:48-15:55 | 空中先验引导下考虑路径回归约束的无人车地形导航 - 陈蔚聪 (深圳大学)',
+                '15:55-16:02 | 基于自适应特征计算与级联区域生长的单木点云枝叶分离 - 申玉鹏 (云南师范大学地理学部)',
+                '16:02-16:09 | 基于双三角形与滑窗优化的激光雷达位置识别方法 - 史鹏程 (武汉大学)',
+                '16:09-16:16 | 基于星载激光雷达的全球红树林地上生物量高精度制图 - 于佳男 (湖南科技大学)',
+                '16:16-16:23 | SceneReasoner:用于大语言模型室内大尺度场景理解的解耦式空间标记化 - 史博航 (深圳大学)',
+                '16:23-16:30 | 基于横截面特征探查与几何关系细化的车载激光点云有向车道图重建 - 陈润斌 (福州大学)',
+                '16:30-16:37 | 泛热带盐渍区CYGNSS土壤水分反演的盐分效应与分级校正 - 顾云鹏 (河南理工大学测绘与空天信息学院)',
+                '16:37-16:41 | 快闪:基于高斯透射率深度先验的多视图立体重建方法 - 周旭东 (三峡大学)',
+                '16:41-16:45 | 快闪:自动驾驶激光雷达的跨域感知模型联合更新 - 陈睿婕 (同济大学)',
+                '16:45-16:49 | 快闪:基于邻域法向量与曲率的多源石窟造像点云配准方法 - 李晋儒 (北京建筑大学)',
+                '16:49-16:53 | 快闪:融合无人机激光雷达和高光谱的植被方向反射率重建 - 郑光 (南京大学)',
+                '16:53-16:57 | 快闪:基于改进YOLOv11的光伏板缺陷检测方法研究 - 王晓杰 (山东科技大学)',
+                '16:57-17:01 | 快闪:BLCSF:光子引力驱动的ICESat-2内陆湖泊测深方法 - 常兵涛 (中山大学)',
+                '17:01-17:05 | 快闪:融合惯性与视觉测量的大跨度桥梁线形形变实时测量 - 陈睿哲 (深圳大学)',
+                '17:05-17:09 | 快闪:融合LiDAR点云和RGB影像的稠密滑坡三维位移场构建 - 蒋贵宇 (三峡大学)',
+                '17:09-17:13 | 快闪:星载单光子激光雷达信号噪声融合的主被动观测方法 - 刘昊 (武汉大学)',
+                '17:13-17:17 | 快闪:面向复杂陆地交通点云场景语义分割的上下文边界感知网络 - 陈焱明 (河海大学)',
+                '17:17-17:21 | 快闪:一种基于极坐标谱域对齐的免训练异构激光雷达位置识别方法 - 王童 (中国矿业大学)',
+                '17:21-17:25 | 快闪:融合机载激光雷达与卫星数据的林分密度跨尺度绘图 - 武金琛 (中国科学院空天信息创新研究院)',
+                '17:25-17:29 | 快闪:有限视场约束下大跨度环境无人机层级式自主探测 - 周玉泉 (武汉轻工大学)',
+                '17:29-17:33 | 快闪:基于建筑感知查询学习的三维建筑实例分割方法 - 黄远飞 (中山大学)'
+            ]},
+            { title: '优秀青年论文报告/快闪报告(二)', time: '10月31日 14:00-18:30', loc: '南海翼LF层会议室5', conveners: '主持人: 董震', talks: [
+                '14:00-14:07 | 基于前景信息引导的室外域泛化三维目标检测方法 - 夏启明 (香港理工大学)',
+                '14:07-14:14 | 遥感场景骨架图辅助的城市非视距环境轻量化自适应定位增强 - 张骐誉 (武汉大学)',
+                '14:14-14:21 | Harness2Building:面向机载激光点云LoD2建筑重建的反馈引导智能体框架 - 黄鸿盛 (香港理工大学)',
+                '14:21-14:28 | 空间主轴划分与场景路由协同的大尺度视觉重定位方法 - 鲁硕 (重庆交通大学)',
+                '14:28-14:35 | 基于几何细化的稀疏监督三维目标检测 - 曾炳辉 (深圳大学)',
+                '14:35-14:42 | IDEAL-LIO:面向退化环境的约束高效激光雷达惯性里程计 - 黄子旋 (武汉大学)',
+                '14:42-14:49 | 参数化生长先验引导的车载激光点云行道树三维重建 - 王瑄 (广西壮族自治区自然资源遥感院)',
+                '14:49-14:56 | TreePart-SAM:融合自动提示与置信度门控的单木LiDAR点云主干-树冠分割 - 曹正昊 (南京林业大学)',
+                '14:56-15:03 | 复杂城市场景下空间几何特征约束的跨模态点云配准方法 - 许梦兵 (中国测绘科学研究院)',
+                '15:03-15:10 | OCCDiff:用于从噪声点云中构建高保真3D建筑几何的占用扩散模型 - 隋佳璐 (香港大学)',
+                '15:10-15:17 | 融合双向几何一致性与冠层包络约束的树木程序化重建 - 罗婷丹 (深圳大学)',
+                '15:17-15:24 | 基于几何贡献投票的激光雷达惯性里程计方向退化风险评估 - 孙雪航 (武汉大学)',
+                '15:24-15:31 | 面向城市航空摄影的三维高斯建筑外观局部更新 - 刘福贵 (深圳大学)',
+                '15:35-15:42 | 水下平行激光角度与位移同步测量装备及方法 - 孟凡一 (香港理工大学)',
+                '15:42-15:49 | A2GB-Net:面向机载激光雷达地上生物量估算的知识编码深度学习网络 - 李博文 (中国林业科学研究院)',
+                '15:49-15:56 | 融合森林结构与生态特征的地基点云扇环候选区单木提取 - 雷蓝坤 (重庆交通大学)',
+                '15:56-16:03 | 基于自然场景多平面约束的鱼眼相机-LiDAR无靶联合标定方法 - 张家源 (首都师范大学)',
+                '16:03-16:10 | 上肢方向与稀疏点云协同的三维手部姿态恢复 - 杨建兴 (中国测绘科学研究院)',
+                '16:10-16:17 | RACER-VGGT:从近似压缩到精确显存预算执行 - 王海滨 (深圳大学)',
+                '16:17-16:24 | 面向LiDAR滑坡窗口弱监督识别的均匀位置假设多示例学习网络 - 王敬茹 (香港中文大学(深圳))',
+                '16:24-16:31 | GeoNav3D:基于空间通行能力感知交互的移动机器人三维导航智能体框架 - 厉彦一 (同济大学)',
+                '16:31-16:38 | 先验点云辅助的林下无人机激光雷达数据采集任务规划与仿真验证 - 陈杨 (中山大学)',
+                '16:38-16:45 | 基于屋顶高程模型的建筑物屋顶线框重建方法 - 沈灏源 (深圳大学)',
+                '16:45-16:52 | 面向智能驾驶三维目标检测器鲁棒性评估的扫描时序与几何约束融合点云分级扰动方法 - 平世博 (集美大学)',
+                '16:52-16:59 | 基于激光与视觉深度选择的高斯重建初始化方法 - 李子璇 (武汉大学)',
+                '17:02-17:06 | 快闪:MSGNav:释放多模态3D场景图在零样本具身导航中的潜力 - 黄勋 (厦门大学)',
+                '17:06-17:10 | 快闪:ST-SatBathyNet:一个融合ICESat-2激光测高与多时相Sentinel-2的浅海水深时空深度学习反演框架 - 贾晓鹏 (陕西师范大学)',
+                '17:10-17:14 | 快闪:激光点云与BIM融合的施工进度管控 - 李文钦 (深圳市龙岗城投新基础设施建设有限公司)',
+                '17:14-17:18 | 快闪:激光雷达增强的3D高斯泼溅场景重建方法 - 李亚鹏 (中国地质大学(武汉))',
+                '17:18-17:22 | 快闪:语义引导的城市场景精细结构3DGS重建 - 薛乐天 (深圳大学)',
+                '17:22-17:26 | 快闪:面向移动激光雷达强度影像的任务专家解耦地铁隧道渗漏水检测与实例分割 - 付春天 (首都师范大学)',
+                '17:26-17:30 | 快闪:基于点-网格特征融合与强度联合学习的隧道点云端到端三维重建 - 于金正 (首都师范大学)',
+                '17:30-17:34 | 快闪:基于多尺度地形一致性的星载激光足印定位精度优化方法 - 徐超鹏 (自然资源部国土卫星遥感应用中心)',
+                '17:34-17:38 | 快闪:融合无人机激光雷达点云的几何感知高斯泼溅方法 - 雒朝峰 (信息工程大学)',
+                '17:38-17:42 | 快闪:融合零样本几何先验和主动学习的弱监督室内平面图重建 - 王旭哲 (中国地质大学(武汉))',
+                '17:42-17:46 | 快闪:BCAFNet:面向多模态点云语义分割的双向跨模态注意力与二维—三维一致性网络 - 李虎辰 (武汉大学)',
+                '17:46-17:50 | 快闪:一种基于局部地形复杂度指数的GEDI冠层高度自适应校正新方法 - 聂辰辰 (西南大学地理科学学院)',
+                '17:50-17:54 | 快闪:基于树顶约束与局部图切分的单木点云分割方法 - 陈科 (南京信息工程大学)',
+                '17:54-17:58 | 快闪:不确定性感知深度优化的三维高斯泼溅重建方法 - 李肖龙 (河南理工大学)',
+                '17:58-18:02 | 快闪:3D-UTramba: 融合Transformer-Mamba混合结构的城市点云语义分割 - 陈斯 (中南大学)',
+                '18:02-18:06 | 快闪:基于既有模型的残缺点云补全与桥梁桁架骨架线提取方法 - 翟若明 (长江科学院工程安全与灾害防治研究所)',
+                '18:06-18:10 | 快闪:从一域到多域:航空激光雷达语义分割的单源域泛化 - 赵若凡 (首都师范大学)',
+                '18:10-18:14 | 快闪:基于物理边界状态感知监督的隧道渗漏水分割方法 - 杨平 (首都师范大学)',
+                '18:14-18:18 | 快闪:基于伪标签自优化的无监督三维点云变化检测方法 - 俞昊 (中国地质大学(武汉))',
+                '18:18-18:22 | 快闪:基于多视图几何感知优先缓冲的场景坐标回归方法 - 张朝鑫 (重庆交通大学)',
+                '18:22-18:26 | 快闪:面向城市场景感知的光场语义约束深度估计方法 - 许怡欣 (首都师范大学)',
+                '18:26-18:30 | 快闪:基于多源遥感数据和可解释机器学习的森林冠层高度反演 - 包俊帆 (兰州交通大学)'
+            ]}
+        ];
+
+        // 渲染机构列表
+        document.getElementById('org-container').innerHTML = orgData.map(o => `
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                <h4 class="font-bold text-gray-800 mb-2 text-sm text-blue-900 border-b pb-1">${o.title}</h4>
+                <p class="text-gray-600 text-xs leading-relaxed">${o.content}</p>
+            </div>
+        `).join('');
+
+        // 渲染日程总览
+        document.getElementById('schedule-container').innerHTML = scheduleData.map(s => `
+            <div class="relative pl-8">
+                <div class="absolute left-0 top-1.5 w-3 h-3 bg-blue-600 rounded-full ring-4 ring-blue-100"></div>
+                <div class="bg-white rounded-xl p-3 shadow-sm border border-gray-100">
+                    <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">${s.time}</span>
+                    <h4 class="font-bold text-gray-800 text-sm mt-1">${s.title}</h4>
+                    <p class="text-xs text-gray-500 mt-0.5">📍 ${s.loc}</p>
+                </div>
+            </div>
+        `).join('');
+
+        // 渲染主旨报告 (卡片内细分为个人简介与报告摘要)
+        document.getElementById('keynotes-container').innerHTML = keynotesData.map((k, i) => `
+            <div class="border border-gray-200 rounded-xl bg-white mb-2 overflow-hidden shadow-sm">
+                <button class="w-full text-left p-4 flex justify-between items-center bg-white hover:bg-gray-50 transition-colors" onclick="toggleAccordion(this)">
+                    <div>
+                        <span class="inline-block px-2 py-0.5 bg-blue-100 text-blue-800 rounded text-xs font-bold mr-2">主旨报告 ${i+1}</span>
+                        <span class="font-bold text-gray-800 text-sm">${k.name} (${k.org})</span>
+                        <p class="text-xs text-gray-600 mt-1 font-medium truncate max-w-[280px] sm:max-w-md">${k.title}</p>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-400 transform transition-transform shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content bg-gray-50 text-sm border-t border-gray-100">
+                    <div class="p-4 space-y-3">
+                        <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-100/60">
+                            <p class="text-xs font-bold text-blue-900 mb-1">👤 个人简介</p>
+                            <p class="text-xs text-gray-700 leading-relaxed text-justify">${k.bio}</p>
+                        </div>
+                        <div class="bg-indigo-50/50 p-3 rounded-lg border border-indigo-100/60">
+                            <p class="text-xs font-bold text-indigo-900 mb-1">🎤 报告简介 (题目: ${k.title})</p>
+                            <p class="text-xs text-gray-700 leading-relaxed text-justify">${k.abstract}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        // 渲染26个分会场专题
+        document.getElementById('sessions-container').innerHTML = sessionsData.map(se => `
+            <div class="border border-gray-200 rounded-xl bg-white mb-2 overflow-hidden shadow-sm">
+                <button class="w-full text-left p-3.5 flex justify-between items-center bg-white hover:bg-gray-50 transition-colors" onclick="toggleAccordion(this)">
+                    <div class="pr-2">
+                        <span class="font-bold text-gray-800 text-sm block">${se.title}</span>
+                        <span class="text-xs text-blue-600 mt-0.5 block">🕒 ${se.time} | 📍 ${se.loc}</span>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-400 transform transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content bg-gray-50 text-sm border-t border-gray-100">
+                    <div class="p-4 space-y-2">
+                        <p class="text-xs font-medium text-gray-700">👥 <strong>召集人：</strong>${se.conveners}</p>
+                        <p class="text-xs font-bold text-gray-800 mt-2 mb-1 border-b pb-1">报告列表：</p>
+                        <ul class="space-y-1.5 text-gray-600 list-disc list-inside text-xs leading-relaxed">
+                            ${se.talks.map(t => `<li>${t}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        // 渲染赛事与青年论坛折叠卡片
+        document.getElementById('special-events-container').innerHTML = specialEventsData.map(se => `
+            <div class="border border-gray-200 rounded-xl bg-white mb-2 overflow-hidden shadow-sm">
+                <button class="w-full text-left p-3.5 flex justify-between items-center bg-white hover:bg-gray-50 transition-colors" onclick="toggleAccordion(this)">
+                    <div class="pr-2">
+                        <span class="font-bold text-gray-800 text-sm block">${se.title}</span>
+                        <span class="text-xs text-blue-600 mt-0.5 block">🕒 ${se.time} | 📍 ${se.loc}</span>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-400 transform transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content bg-gray-50 text-sm border-t border-gray-100">
+                    <div class="p-4 space-y-2">
+                        ${se.conveners ? `<p class="text-xs font-medium text-gray-700 mb-2">👥 ${se.conveners}</p>` : ''}
+                        <ul class="space-y-1.5 text-gray-600 list-disc list-inside text-xs leading-relaxed">
+                            ${se.talks.map(t => `<li>${t}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        // 通用全局折叠展开函数
+        function toggleAccordion(btn) {
+            const content = btn.nextElementSibling;
+            const svg = btn.querySelector('svg');
+            content.classList.toggle('expanded');
+            svg.classList.toggle('rotate-180');
+        }
+
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const drawerMenu = document.getElementById('drawerMenu');
+        const drawerOverlay = document.getElementById('drawerOverlay');
+
+        function toggleMenu() {
+            if (drawerMenu.classList.contains('translate-x-full')) {
+                drawerMenu.classList.remove('translate-x-full');
+                drawerOverlay.classList.remove('hidden');
+                setTimeout(() => drawerOverlay.classList.remove('opacity-0'), 10);
+            } else {
+                drawerMenu.classList.add('translate-x-full');
+                drawerOverlay.classList.add('opacity-0');
+                setTimeout(() => drawerOverlay.classList.add('hidden'), 300);
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        drawerOverlay.addEventListener('click', toggleMenu);
+        document.querySelectorAll('.menu-links a').forEach(l => l.addEventListener('click', toggleMenu));
+    </script>
+</body>
+</html>

@@ -7,3 +7,8 @@
 - 网站入口：<https://shengjuntang.github.io/Lidar2026/>
 
 推送到 `main` 分支后，GitHub Actions 将自动更新 GitHub Pages。
+
+## 内容维护
+
+- `index.html`：页面结构、主日程、主旨报告和分会场内容。
+- `data-v8.js`：依据《会议手册 V9》核对的数据比赛、优秀青年论文/快闪报告及 P-001 至 P-072 海报名单（保留原文件名以兼容既有页面引用）。

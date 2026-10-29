@@ -993,8 +993,100 @@
                 </div>`;
         }
 
+        function renderCompetitionTrackCards(events) {
+            const trackOrder = ['赛道一', '赛道二', '赛道三', '赛道四', '赛道五', '赛道六', '赛道七'];
+            const tracks = new Map();
+
+            events.forEach(event => {
+                event.talks.forEach(talk => {
+                    const parts = talk.split('|').map(part => part.trim());
+                    if (parts.length < 5 || parts[1] === '茶歇') return;
+
+                    const [time, trackName, team, presenter, ...orgParts] = parts;
+                    const trackKey = trackOrder.find(key => trackName.startsWith(key));
+                    if (!trackKey) return;
+
+                    const phaseMatch = trackName.match(/（([^）]+)）/);
+                    const phase = phaseMatch ? phaseMatch[1] : '';
+                    const baseTitle = trackName.replace(/（[^）]+）/g, '').replace('·', '：');
+                    if (!tracks.has(trackKey)) {
+                        tracks.set(trackKey, {
+                            key: trackKey,
+                            title: baseTitle,
+                            loc: event.loc,
+                            phases: new Map(),
+                            count: 0
+                        });
+                    }
+
+                    const track = tracks.get(trackKey);
+                    if (!track.phases.has(phase)) track.phases.set(phase, []);
+                    track.phases.get(phase).push({
+                        time,
+                        team,
+                        presenter: presenter.replace(/^报告人：/, ''),
+                        org: orgParts.join(' | ')
+                    });
+                    track.count += 1;
+                });
+            });
+
+            return trackOrder.filter(key => tracks.has(key)).map(key => {
+                const track = tracks.get(key);
+                const showPhase = track.phases.size > 1 || [...track.phases.keys()].some(Boolean);
+                const phaseSections = [...track.phases.entries()].map(([phase, entries]) => `
+                    <div class="${showPhase ? 'pt-1' : ''}">
+                        ${showPhase ? `<div class="mb-2 flex items-center gap-2"><span class="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-bold text-blue-700">${phase || '综合组'}</span><span class="text-[10px] text-gray-400">${entries.length} 支队伍</span></div>` : ''}
+                        <div class="grid grid-cols-[72px_minmax(0,1fr)] sm:grid-cols-[88px_minmax(0,1fr)] gap-3 px-3 pb-1 text-[10px] font-semibold tracking-wide text-gray-400">
+                            <span>时间</span><span>队伍与报告信息</span>
+                        </div>
+                        <div class="space-y-2">
+                            ${entries.map(entry => `
+                                <div class="grid grid-cols-[72px_minmax(0,1fr)] sm:grid-cols-[88px_minmax(0,1fr)] gap-3 rounded-lg border border-gray-200 bg-white px-3 py-3 shadow-sm">
+                                    <span class="text-[11px] font-semibold font-mono tabular-nums text-blue-700 whitespace-nowrap pt-0.5">${entry.time}</span>
+                                    <div class="min-w-0">
+                                        <p class="text-xs font-semibold text-gray-800 leading-relaxed">${entry.team}</p>
+                                        <div class="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-[11px] leading-relaxed text-gray-500">
+                                            <span><strong class="font-medium text-gray-700">报告人：</strong>${entry.presenter}</span>
+                                            <span class="basis-full"><strong class="font-medium text-gray-700">单位：</strong>${entry.org}</span>
+                                        </div>
+                                    </div>
+                                </div>`).join('')}
+                        </div>
+                    </div>`).join('');
+
+                return `
+                    <div class="border border-blue-100 rounded-xl bg-white mb-2 overflow-hidden shadow-sm">
+                        <button class="w-full text-left p-3.5 flex justify-between items-center bg-gradient-to-r from-blue-50/80 to-white hover:bg-blue-50 transition-colors" onclick="toggleAccordion(this)" aria-expanded="false">
+                            <div class="pr-3 min-w-0">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="font-bold text-blue-950 text-sm">${track.title}</span>
+                                    <span class="shrink-0 rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-semibold text-blue-700">${track.count} 支队伍</span>
+                                </div>
+                                <span class="text-xs text-blue-600 mt-1 block">🕒 10月31日 | 📍 ${track.loc}</span>
+                            </div>
+                            <svg class="w-5 h-5 text-blue-400 transform transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-gray-50 text-sm border-t border-blue-100">
+                            <div class="p-4 space-y-4">${phaseSections}</div>
+                        </div>
+                    </div>`;
+            }).join('');
+        }
+
         // 渲染赛事与青年论坛折叠卡片
-        document.getElementById('special-events-container').innerHTML = verifiedSpecialEventsData.map(se => `
+        const competitionEvents = verifiedSpecialEventsData.slice(0, 2);
+        const youthEvents = verifiedSpecialEventsData.slice(2);
+        document.getElementById('special-events-container').innerHTML = `
+            <div class="mb-2 mt-1 flex items-center justify-between px-1">
+                <span class="text-xs font-bold text-blue-900">点云数据处理大赛</span>
+                <span class="text-[10px] text-gray-400">点击赛道直接展开</span>
+            </div>
+            ${renderCompetitionTrackCards(competitionEvents)}
+            <div class="mb-2 mt-5 flex items-center px-1">
+                <span class="text-xs font-bold text-indigo-900">优秀青年论文与快闪报告</span>
+            </div>
+        ` + youthEvents.map(se => `
             <div class="border border-gray-200 rounded-xl bg-white mb-2 overflow-hidden shadow-sm">
                 <button class="w-full text-left p-3.5 flex justify-between items-center bg-white hover:bg-gray-50 transition-colors" onclick="toggleAccordion(this)">
                     <div class="pr-2">

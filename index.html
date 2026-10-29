@@ -910,6 +910,31 @@
             </div>
         `).join('');
 
+        function renderSessionTalk(talk) {
+            const separatorIndex = talk.indexOf('|');
+            const time = separatorIndex >= 0 ? talk.slice(0, separatorIndex).trim() : '';
+            const detail = separatorIndex >= 0 ? talk.slice(separatorIndex + 1).trim() : talk.trim();
+            const speakerSeparator = detail.lastIndexOf(' - ');
+            const title = speakerSeparator >= 0 ? detail.slice(0, speakerSeparator).trim() : detail;
+            const speakerInfo = speakerSeparator >= 0 ? detail.slice(speakerSeparator + 3).trim() : '';
+            const orgStart = speakerInfo.indexOf(' (');
+            const orgEnd = speakerInfo.lastIndexOf(')');
+            const presenter = orgStart >= 0 ? speakerInfo.slice(0, orgStart).trim() : speakerInfo;
+            const org = orgStart >= 0 && orgEnd > orgStart ? speakerInfo.slice(orgStart + 2, orgEnd).trim() : '';
+
+            return `
+                <div class="grid grid-cols-[72px_minmax(0,1fr)] sm:grid-cols-[88px_minmax(0,1fr)] gap-3 rounded-lg border border-gray-200 bg-white px-3 py-3 shadow-sm">
+                    <span class="text-[11px] font-semibold font-mono tabular-nums text-blue-700 whitespace-nowrap pt-0.5">${time}</span>
+                    <div class="min-w-0">
+                        <p class="text-xs font-semibold text-gray-800 leading-relaxed">${title}</p>
+                        <div class="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-[11px] leading-relaxed text-gray-500">
+                            ${presenter ? `<span><strong class="font-medium text-gray-700">报告人：</strong>${presenter}</span>` : ''}
+                            ${org ? `<span><strong class="font-medium text-gray-700">单位：</strong>${org}</span>` : ''}
+                        </div>
+                    </div>
+                </div>`;
+        }
+
         // 渲染26个分会场专题
         document.getElementById('sessions-container').innerHTML = sessionsData.map(se => `
             <div class="border border-gray-200 rounded-xl bg-white mb-2 overflow-hidden shadow-sm">
@@ -923,10 +948,12 @@
                 <div class="accordion-content bg-gray-50 text-sm border-t border-gray-100">
                     <div class="p-4 space-y-2">
                         <p class="text-xs font-medium text-gray-700">👥 <strong>召集人：</strong>${se.conveners}</p>
-                        <p class="text-xs font-bold text-gray-800 mt-2 mb-1 border-b pb-1">报告列表：</p>
-                        <ul class="space-y-1.5 text-gray-600 list-disc list-inside text-xs leading-relaxed">
-                            ${se.talks.map(t => `<li>${t}</li>`).join('')}
-                        </ul>
+                        <div class="grid grid-cols-[72px_minmax(0,1fr)] sm:grid-cols-[88px_minmax(0,1fr)] gap-3 px-3 pt-1 text-[10px] font-semibold tracking-wide text-gray-400">
+                            <span>时间</span><span>报告安排</span>
+                        </div>
+                        <div class="space-y-2">
+                            ${se.talks.map(renderSessionTalk).join('')}
+                        </div>
                     </div>
                 </div>
             </div>

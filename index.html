@@ -30,12 +30,12 @@
         }
         .content-layer { position: relative; z-index: 1; }
         .accordion-content { transition: max-height 0.3s ease-in-out, opacity 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
-        .accordion-content.expanded { max-height: 3000px; opacity: 1; }
+        .accordion-content.expanded { max-height: 12000px; opacity: 1; }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 antialiased selection:bg-blue-200">
 
-    <div class="max-w-2xl mx-auto bg-white min-h-screen relative shadow-2xl overflow-hidden flex flex-col">
+    <div class="max-w-2xl mx-auto bg-white h-screen h-[100dvh] relative shadow-2xl overflow-hidden flex flex-col">
         
         <!-- Header -->
         <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 px-4 py-3 flex justify-between items-center transition-all duration-300">
@@ -55,19 +55,17 @@
                 </button>
             </div>
             <nav class="flex-1 overflow-y-auto p-4 space-y-1 menu-links">
-                <a href="#hero" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">📍 首页 (封面)</a>
-                <a href="#intro" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">📖 大会简介 & 机构</a>
+                <a href="#intro" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">📖 大会介绍</a>
                 <a href="#schedule-overview" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">📅 日程总览</a>
                 <a href="#keynotes" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">🎤 大会主旨报告</a>
-                <a href="#sessions" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">📝 专题报告与分会场</a>
-                <a href="#special-events" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">🏆 赛事与青年论文/快闪报告</a>
-                <a href="#logistics" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">🚗 交通指南</a>
-                <a href="#dining" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">🍽️ 用餐与须知</a>
+                <a href="#sessions" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">📝 分会场报告</a>
+                <a href="#special-events" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">🏆 数据比赛与优秀论文报告</a>
+                <a href="#logistics" class="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 font-medium">🚗 会务与出行指南</a>
             </nav>
         </div>
 
         <!-- Main Content -->
-        <main class="flex-1 overflow-y-auto no-scrollbar scroll-smooth">
+        <main id="mainScroll" class="flex-1 min-h-0 overflow-y-auto no-scrollbar scroll-smooth">
             
             <!-- Hero Section -->
             <section id="hero" class="bg-starry text-white pt-16 pb-20 px-6 text-center shadow-inner">
@@ -88,34 +86,44 @@
 
             <!-- Intro & Org -->
         <section id="intro" class="p-6 pt-10 scroll-mt-12 border-b border-gray-100">
-            <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-6"><div class="w-2 h-6 bg-blue-600 rounded-full mr-3"></div>大会简介与组织机构</h3>
+            <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-6"><div class="w-2 h-6 bg-blue-600 rounded-full mr-3"></div>大会介绍与组织机构</h3>
             <div class="bg-blue-50 rounded-2xl p-5 text-gray-700 text-sm leading-relaxed text-justify space-y-4 border border-blue-100 mb-6">
                 <p>激光雷达专业委员会是国际数字地球学会中国国家委员会下设的全国性学术交流机构，于2012年7月成立，其宗旨为：积极推动激光雷达领域的基础理论、前沿技术和创新应用发展，为全国激光雷达工作者提供学术交流与合作的平台。在成功举办九届全国激光雷达大会的基础上，为进一步促进前沿激光雷达遥感技术深入交流与探讨，定于<strong>2026年10月30日—11月1日</strong>在<strong>深圳</strong>举办第10届全国激光雷达大会。</p>
                 <p>本届会议将针对激光雷达的基础理论、硬件系统、前沿方法、行业应用等方面的难点和热点问题进行交流，同时大会还将举行激光扫描数据处理大赛、激光雷达遥感讲课比赛、评选全国激光雷达优秀博士论文等。</p>
             </div>
 
             <!-- 组织委员会 -->
-            <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 mb-4">
-                <h4 class="font-bold text-gray-800 mb-2 text-sm text-blue-900 border-b pb-1">组织委员会</h4>
-                <div class="space-y-2 text-xs text-gray-600">
+            <div class="border border-blue-100 rounded-2xl bg-white mb-3 overflow-hidden shadow-sm">
+                <button class="w-full text-left p-4 flex justify-between items-center bg-gradient-to-r from-blue-50 to-white hover:bg-blue-50 transition-colors" onclick="toggleAccordion(this)" aria-expanded="false">
+                    <span class="font-bold text-blue-950 text-sm">👥 组织委员会</span>
+                    <span class="flex items-center gap-2 text-xs text-blue-600">点击查看<svg class="w-5 h-5 text-blue-400 transform transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                </button>
+                <div class="accordion-content bg-white text-sm border-t border-blue-100">
+                <div class="p-4 space-y-2 text-xs text-gray-600 leading-relaxed">
                     <p><strong>大会主席：</strong>王瑞胜</p>
                     <p><strong>主任 (按照姓氏笔画排序)：</strong>王伟玺、汤圣君、汪驰升、张星、周昆、郭波</p>
                     <p><strong>副主任 (按照姓氏笔画排序)：</strong>习晓环、马培峰、王冰、王松、方立、石铁柱、刘缘、米晓新、李游、杨波、汪汉云、张鸿生、陈一平、陈智鹏、林浩嘉、周宝定、赵吴凡、姜三、原志路、徐南、郭裕兰、温程璐、谢林甫、蒯希</p>
                     <p><strong>秘书处 (按照姓氏笔画排序)：</strong>王欣、张新梅</p>
                 </div>
+                </div>
             </div>
 
             <!-- 学术委员会 -->
-            <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 mb-4">
-                <h4 class="font-bold text-gray-800 mb-2 text-sm text-blue-900 border-b pb-1">学术委员会</h4>
-                <div class="space-y-2 text-xs text-gray-600">
+            <div class="border border-indigo-100 rounded-2xl bg-white mb-3 overflow-hidden shadow-sm">
+                <button class="w-full text-left p-4 flex justify-between items-center bg-gradient-to-r from-indigo-50 to-white hover:bg-indigo-50 transition-colors" onclick="toggleAccordion(this)" aria-expanded="false">
+                    <span class="font-bold text-indigo-950 text-sm">🎓 学术委员会</span>
+                    <span class="flex items-center gap-2 text-xs text-indigo-600">点击查看<svg class="w-5 h-5 text-indigo-400 transform transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                </button>
+                <div class="accordion-content bg-white text-sm border-t border-indigo-100">
+                <div class="p-4 space-y-2 text-xs text-gray-600 leading-relaxed">
                     <p><strong>主任：</strong>郭华东、郭仁忠、李清泉</p>
                     <p><strong>副主任 (按照姓氏笔画排序)：</strong>王成、王程、王瑞胜、朱精果、刘东、刘春、杨必胜、钟若飞、姚巍、黄正东、黄华国、康志忠、程亮</p>
                     <p><strong>委员 (按照姓氏笔画排序)：</strong>张立强、张吴明、庞勇、习晓环、习通源、马为红、马威、马凌飞、马跃、马勤、王永志、王永君、王伟玺、王冰、王红、王丽英、王宏涛、王国飞、王迪、王和平、王艳军、王健、王继伟、王跃宾、韦朋成、尤号田、毛庆洲、方立、方莉娜、尹超、付安民、白杰、邢帅、邢艳秋、年雁云、危双丰、刘正军、刘伟、刘伟权、刘如飞、刘茂华、刘海建、刘婧、关宏灿、米晓新、汤圣君、许志华、许磊、孙华、孙海丽、孙颖、劳洁英、苏中花、苏伟、苏艳军、杜黎明、李世华、李由、李必军、李加元、李伟、李江、李志才、李贤、李国元、李明磊、李朋飞、李京、李彦、李健、李渭、李媛、李巍岳、杨元维、杨学博、杨荣华、杨秋丽、杨俊涛、杨浩、杨智翔、肖文、吴杭彬、吴建锋、吴宾、吴德成、余柏蒗、应申、汪汉云、汪驰升、汪沛、汪垚、沈月千、沈思淇、宋沙磊、张书航、张云生、张正华、张正鹏、张加龙、张苏、张丽娜、张迪、张星、张振鑫、张猛、张鸿生、张新伟、张磊、张鑫港、陈一平、陈动、陈驰、陈国良、陈思聪、陈海佳、陈焱明、林祥国、罗远、金时超、周雨、周昆、周宝定、周贵云、周梅、郑光、赵旦、赵洋、赵宝林、赵婷萱、胡炜、胡容海、侯妙乐、俞家勇、施贵刚、姜三、姜海兰、贺岩、秦楠楠、敖晟、袁德宝、耿利川、聂胜、贾东振、夏少波、钱立勇、倪文俭、徐文学、徐聿升、徐昇、徐南、徐嘉盛、栾奎峰、郭波、郭浩、郭裕兰、唐龙、唐炉亮、唐超、涂伟、陶武勇、黄华兵、黄明、黄佳鹏、黄荣、曹林、梁欣廉、宿殿鹏、谌一夫、葛旭明、董友强、董秀军、董震、韩晓旭、惠振阳、程峰、童瑞、温程璐、谢欢、谢俊峰、谢洪、谢津平、楚森森、赖旭东、雷印杰、鲍艳、满其霞、窦爱霞、蔡尚书、蔡国榕、蔺小虎、臧玉府、臧或、管海燕、漆建波、谭凯</p>
                 </div>
+                </div>
             </div>
 
-            <div id="org-container" class="space-y-4"></div>
+            <div id="org-container" class="space-y-3"></div>
         </section>
 
             <!-- Schedule Overview -->
@@ -212,7 +220,7 @@
             </section>
 
             <!-- Footer -->
-            <section class="p-6 bg-gray-50 pb-24 text-center">
+            <section class="p-6 bg-gray-50 pb-8 text-center">
                 <div class="mt-4 text-xs text-gray-400">
                     <p>— 感谢您的参与 —</p>
                     <p class="mt-1">© 2026 第10届全国激光雷达大会</p>
@@ -221,22 +229,24 @@
         </main>
 
         <!-- Bottom Nav -->
-        <nav class="absolute bottom-0 w-full bg-white border-t border-gray-200 flex justify-around pb-safe pt-2 pb-2 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-40">
-            <a href="#hero" class="flex flex-col items-center p-2 text-blue-600 nav-btn"><span class="text-[10px] font-medium mt-1">首页</span></a>
-            <a href="#schedule-overview" class="flex flex-col items-center p-2 text-gray-500 nav-btn"><span class="text-[10px] font-medium mt-1">日程</span></a>
-            <a href="#keynotes" class="flex flex-col items-center p-2 text-gray-500 nav-btn"><span class="text-[10px] font-medium mt-1">专家</span></a>
-            <a href="#sessions" class="flex flex-col items-center p-2 text-gray-500 nav-btn"><span class="text-[10px] font-medium mt-1">分会场</span></a>
-            <a href="#logistics" class="flex flex-col items-center p-2 text-gray-500 nav-btn"><span class="text-[10px] font-medium mt-1">指南</span></a>
+        <nav class="shrink-0 w-full bg-white border-t border-gray-200 shadow-[0_-4px_12px_-4px_rgba(15,23,42,0.18)] z-40" aria-label="会议手册主导航">
+            <div class="flex items-stretch overflow-x-auto no-scrollbar px-1 pt-1.5" style="padding-bottom: max(0.5rem, env(safe-area-inset-bottom));">
+                <a href="#intro" data-section="intro" class="nav-btn min-w-[96px] flex-1 flex flex-col items-center justify-center px-2 py-1.5 text-blue-600 rounded-lg bg-blue-50"><span class="text-sm leading-none">📖</span><span class="text-[10px] leading-tight font-medium mt-1 text-center">大会介绍</span></a>
+                <a href="#schedule-overview" data-section="schedule-overview" class="nav-btn min-w-[96px] flex-1 flex flex-col items-center justify-center px-2 py-1.5 text-gray-500 rounded-lg"><span class="text-sm leading-none">📅</span><span class="text-[10px] leading-tight font-medium mt-1 text-center">日程总览</span></a>
+                <a href="#keynotes" data-section="keynotes" class="nav-btn min-w-[112px] flex-1 flex flex-col items-center justify-center px-2 py-1.5 text-gray-500 rounded-lg"><span class="text-sm leading-none">🎤</span><span class="text-[10px] leading-tight font-medium mt-1 text-center">大会主旨报告</span></a>
+                <a href="#sessions" data-section="sessions" class="nav-btn min-w-[104px] flex-1 flex flex-col items-center justify-center px-2 py-1.5 text-gray-500 rounded-lg"><span class="text-sm leading-none">📝</span><span class="text-[10px] leading-tight font-medium mt-1 text-center">分会场报告</span></a>
+                <a href="#special-events" data-section="special-events" class="nav-btn min-w-[148px] flex-1 flex flex-col items-center justify-center px-2 py-1.5 text-gray-500 rounded-lg"><span class="text-sm leading-none">🏆</span><span class="text-[10px] leading-tight font-medium mt-1 text-center">数据比赛与优秀论文报告</span></a>
+                <a href="#logistics" data-section="logistics" class="nav-btn min-w-[128px] flex-1 flex flex-col items-center justify-center px-2 py-1.5 text-gray-500 rounded-lg"><span class="text-sm leading-none">🚗</span><span class="text-[10px] leading-tight font-medium mt-1 text-center">会务与出行指南</span></a>
+            </div>
         </nav>
     </div>
 
     <!-- Data Injection & Interactive Scripts -->
     <script>
         const orgData = [
-            { title: '指导单位与主办单位', content: '指导单位：国际数字地球学会中国国家委员会<br>主办单位：国际数字地球学会中国国家委员会激光雷达专业委员会<br>承办单位：深圳大学' },
-            { title: '协办单位 / 组织机构', content: '亚热带建筑与城市科学全国重点实验室、测绘遥感信息工程全国重点实验室、区域与城市生态安全全国重点实验室、自然资源部大湾区地理环境监测重点实验室、自然资源部城市国土资源监测与仿真重点实验室、自然资源部国土空间大数据技术创新中心、广东省城市空间信息工程重点实验室、深圳市空间信息智能感知与服务重点实验室、深圳市城市数字孪生技术重点实验室、粤港澳智慧城市联合实验室、深圳大学智慧城市研究院、河北省空天信息与智能化测绘重点实验室、厦门大学福建省城市智能感知与计算重点实验室、中山大学遥感科学与技术学院、中国林业科学研究院资源信息研究所、首都师范大学三维信息获取与应用教育部重点实验室、苏州科技大学地理科学与测绘工程学院、山东科技大学测绘与空间信息学院、重庆交通大学智慧城市学院、人工智能与数字经济广东省实验室(深圳)、广东工业大学土木与交通工程学院' },
-            { title: '赞助机构', content: '<strong>钻石支持企业：</strong>深圳大疆创新科技有限公司<br><strong>赞助企业：</strong>北京数字绿土科技股份有限公司、欧思徕(北京)智能科技有限公司、武汉珞珈伊云光电技术有限公司、深圳飞马机器人股份有限公司、深圳市其域创新科技有限公司、瑞合玄武(成都)科技有限公司' },
-            { title: '协办期刊', content: '《国际数字地球学报(英文版)》、《地球大数据(英文版)》、《遥感学报》、《测绘学报》、《遥感技术与应用》、《地球空间信息科学学报(英文版) / Geo-spatial Information Science》' }
+            { title: '协办单位', icon: '🤝', tone: 'emerald', content: '亚热带建筑与城市科学全国重点实验室、测绘遥感信息工程全国重点实验室、区域与城市生态安全全国重点实验室、自然资源部大湾区地理环境监测重点实验室、自然资源部城市国土资源监测与仿真重点实验室、自然资源部国土空间大数据技术创新中心、广东省城市空间信息工程重点实验室、深圳市空间信息智能感知与服务重点实验室、深圳市城市数字孪生技术重点实验室、粤港澳智慧城市联合实验室、深圳大学智慧城市研究院、河北省空天信息与智能化测绘重点实验室、厦门大学福建省城市智能感知与计算重点实验室、中山大学遥感科学与技术学院、中国林业科学研究院资源信息研究所、首都师范大学三维信息获取与应用教育部重点实验室、苏州科技大学地理科学与测绘工程学院、山东科技大学测绘与空间信息学院、重庆交通大学智慧城市学院、人工智能与数字经济广东省实验室(深圳)、广东工业大学土木与交通工程学院' },
+            { title: '赞助机构', icon: '💎', tone: 'amber', content: '<strong>钻石支持企业：</strong>深圳大疆创新科技有限公司<br><strong>赞助企业：</strong>北京数字绿土科技股份有限公司、欧思徕(北京)智能科技有限公司、武汉珞珈伊云光电技术有限公司、深圳飞马机器人股份有限公司、深圳市其域创新科技有限公司、瑞合玄武(成都)科技有限公司' },
+            { title: '协办期刊', icon: '📚', tone: 'violet', content: '《国际数字地球学报(英文版)》、《地球大数据(英文版)》、《遥感学报》、《测绘学报》、《遥感技术与应用》、《地球空间信息科学学报(英文版) / Geo-spatial Information Science》' }
         ];
 
         const scheduleData = [
@@ -744,9 +754,14 @@
 
         // 渲染机构列表
         document.getElementById('org-container').innerHTML = orgData.map(o => `
-            <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
-                <h4 class="font-bold text-gray-800 mb-2 text-sm text-blue-900 border-b pb-1">${o.title}</h4>
-                <p class="text-gray-600 text-xs leading-relaxed">${o.content}</p>
+            <div class="border border-gray-200 rounded-2xl bg-white overflow-hidden shadow-sm">
+                <button class="w-full text-left p-4 flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition-colors" onclick="toggleAccordion(this)" aria-expanded="false">
+                    <span class="font-bold text-gray-900 text-sm">${o.icon} ${o.title}</span>
+                    <span class="flex items-center gap-2 text-xs text-gray-500">点击查看<svg class="w-5 h-5 text-gray-400 transform transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                </button>
+                <div class="accordion-content bg-white text-sm border-t border-gray-100">
+                    <div class="p-4 text-gray-600 text-xs leading-relaxed">${o.content}</div>
+                </div>
             </div>
         `).join('');
 
@@ -837,6 +852,7 @@
             const svg = btn.querySelector('svg');
             content.classList.toggle('expanded');
             svg.classList.toggle('rotate-180');
+            btn.setAttribute('aria-expanded', content.classList.contains('expanded') ? 'true' : 'false');
         }
 
         const menuBtn = document.getElementById('menuBtn');
@@ -860,6 +876,16 @@
         closeMenuBtn.addEventListener('click', toggleMenu);
         drawerOverlay.addEventListener('click', toggleMenu);
         document.querySelectorAll('.menu-links a').forEach(l => l.addEventListener('click', toggleMenu));
+
+        const bottomNavLinks = document.querySelectorAll('.nav-btn');
+        bottomNavLinks.forEach(link => link.addEventListener('click', () => {
+            bottomNavLinks.forEach(item => {
+                item.classList.remove('text-blue-600', 'bg-blue-50');
+                item.classList.add('text-gray-500');
+            });
+            link.classList.remove('text-gray-500');
+            link.classList.add('text-blue-600', 'bg-blue-50');
+        }));
     </script>
 </body>
 </html>
